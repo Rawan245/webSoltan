@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>العروض اليوم - مطعم السلطان للمأكولات البحرية</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --color-primary: #17355F;
+            --color-secondary: #ffffff;
+            --color-accent: #2070D5;
+            --color-text: #4B5563;
+            --color-bg-light: #F0F4F8;
+            --color-border: #e0e0e0;
+            --font-main: 'Cairo', sans-serif;
+            --spacing-sm: 8px;
+            --spacing-md: 16px;
+            --spacing-lg: 32px;
+            --spacing-xl: 64px;
+            --shadow-card: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --radius-md: 8px;
+            --radius-lg: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--color-bg-light);
+            color: var(--color-text);
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        /* Header */
+        .main-header {
+            background-color: var(--color-secondary);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: var(--spacing-sm) 0;
+        }
+
+        .main-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 70px;
+            width: 70px;
+            transition: transform 0.5s;
+        }
+
+        .logo:hover img {
+            transform: scale(1.05);
+        }
+
+        .main-nav ul {
+            display: flex;
+            gap: var(--spacing-lg);
+            list-style: none;
+        }
+
+        .main-nav a {
+            font-weight: 700;
+            color: var(--color-primary);
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: var(--radius-md);
+            transition: all 0.3s;
+        }
+
+        .main-nav a.active,
+        .main-nav a:hover {
+            color: var(--color-accent);
+            background: rgba(32, 112, 213, 0.1);
+        }
+
+        .orders-link {
+            background: var(--color-accent) !important;
+            color: var(--color-secondary) !important;
+            padding: 10px 20px !important;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .menu-toggle .bar {
+            width: 25px;
+            height: 3px;
+            background-color: var(--color-primary);
+            border-radius: 2px;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 280px;
+            height: 100vh;
+            background-color: var(--color-primary);
+            color: var(--color-secondary);
+            padding: var(--spacing-lg);
+            transition: right 0.3s ease;
+            z-index: 2000;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .close-menu {
+            background: none;
+            border: none;
+            color: var(--color-secondary);
+            font-size: 2rem;
+            cursor: pointer;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .mobile-menu a {
+            color: var(--color-secondary);
+            font-size: 1.2rem;
+            text-decoration: none;
+            padding: 12px;
+            border-radius: var(--radius-md);
+            transition: 0.3s;
+            display: block;
+        }
+
+        .mobile-menu a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            padding-right: 20px;
+        }
+
+        /* Page Content */
+        .page-content {
+            padding-top: var(--spacing-lg);
+            padding-bottom: var(--spacing-xl);
+        }
+
+        /* Top Bar */
+        .offers-top-bar {
+            background-color: var(--color-secondary);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-card);
+            margin-bottom: var(--spacing-lg);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+        }
+
+        .search-box {
+            display: flex;
+            flex: 1;
+            min-width: 300px;
+            gap: var(--spacing-sm);
+        }
+
+        .search-box input {
+            flex: 1;
+            padding: 12px 20px;
+            border: 2px solid var(--color-border);
+            border-radius: var(--radius-md);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--color-accent);
+            box-shadow: 0 0 0 3px rgba(32, 112, 213, 0.1);
+        }
+
+        .btn-search {
+            background-color: var(--color-primary);
+            color: var(--color-secondary);
+            border: none;
+            padding: 12px 30px;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+
+        .btn-search:hover {
+            background-color: var(--color-accent);
+            transform: translateY(-2px);
+        }
+
+        .cart-status {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            background-color: var(--color-bg-light);
+            padding: 12px 24px;
+            border-radius: var(--radius-md);
+            border: 2px solid var(--color-border);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .cart-status:hover {
+            border-color: var(--color-accent);
+            transform: scale(1.02);
+        }
+
+        .cart-icon {
+            font-size: 1.8rem;
+        }
+
+        .cart-info {
+            display: flex;
+            flex-direction: column;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        .cart-count {
+            font-size: 0.9rem;
+        }
+
+        .cart-total {
+            font-size: 1.1rem;
+            color: var(--color-accent);
+        }
+
+        /* Offers Layout */
+        .offers-layout {
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: var(--spacing-lg);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .product-card {
+            background-color: var(--color-secondary);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+            border-color: var(--color-accent);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .product-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .product-info {
+            padding: var(--spacing-lg);
+        }
+
+        .product-info h3 {
+            font-size: 1.15rem;
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-primary);
+            font-weight: 700;
+        }
+
+        .product-desc {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: var(--spacing-md);
+            line-height: 1.6;
+            min-height: 40px;
+        }
+
+        .product-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: var(--spacing-sm);
+            flex-wrap: wrap;
+        }
+
+        .price {
+            font-size: 1.3rem;
+            color: #27ae60;
+            font-weight: 800;
+        }
+
+        .btn-add-cart {
+            background-color: var(--color-accent);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .btn-add-cart:hover {
+            background-color: var(--color-primary);
+            transform: translateY(-2px);
+        }
+
+        /* Sidebar */
+        .order-sidebar {
+            background-color: var(--color-secondary);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-card);
+            padding: var(--spacing-lg);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+            border: 2px solid var(--color-border);
+        }
+
+        .order-sidebar h3 {
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-md);
+            padding-bottom: var(--spacing-sm);
+            border-bottom: 3px solid var(--color-accent);
+            font-size: 1.3rem;
+        }
+
+        .cart-items-list {
+            min-height: 200px;
+            max-height: 400px;
+            overflow-y: auto;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .empty-cart-msg {
+            text-align: center;
+            color: #999;
+            padding: var(--spacing-xl) var(--spacing-md);
+            font-style: italic;
+        }
+
+        .cart-footer {
+            border-top: 2px solid var(--color-bg-light);
+            padding-top: var(--spacing-md);
+        }
+
+        .summary-line {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-md);
+            color: var(--color-primary);
+        }
+
+        .final-total {
+            color: var(--color-accent);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary) 100%);
+            color: var(--color-secondary);
+            border: none;
+            padding: 14px 24px;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 700;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(32, 112, 213, 0.3);
+        }
+
+        .btn-block {
+            width: 100%;
+        }
+
+        .btn-checkout {
+            background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+        }
+
+        /* Menu Preview */
+        .menu-preview-section {
+            margin-top: var(--spacing-xl);
+            text-align: center;
+        }
+
+        .menu-preview-section h3 {
+            color: var(--color-primary);
+            font-size: 1.8rem;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .menu-images-scroll {
+            display: flex;
+            overflow-x: auto;
+            gap: var(--spacing-lg);
+            padding: var(--spacing-md) 0;
+            scroll-behavior: smooth;
+        }
+
+        .menu-images-scroll::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .menu-images-scroll::-webkit-scrollbar-track {
+            background: var(--color-bg-light);
+            border-radius: 10px;
+        }
+
+        .menu-images-scroll::-webkit-scrollbar-thumb {
+            background: var(--color-accent);
+            border-radius: 10px;
+        }
+
+        .menu-img {
+            min-width: 320px;
+            height: 500px;
+            object-fit: cover;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-card);
+            border: 3px solid var(--color-border);
+        }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 3000;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background-color: var(--color-secondary);
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-lg);
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            border: none;
+            background: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #999;
+            transition: 0.3s;
+        }
+
+        .close-modal:hover {
+            color: #e74c3c;
+            transform: rotate(90deg);
+        }
+
+        .modal-content h2 {
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-lg);
+            text-align: center;
+            font-size: 1.8rem;
+        }
+
+        .checkout-form {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-primary);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--color-border);
+            border-radius: var(--radius-md);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-accent);
+            box-shadow: 0 0 0 3px rgba(32, 112, 213, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* Footer */
+        .main-footer {
+            background: linear-gradient(135deg, var(--color-primary) 0%, #0d2545 100%);
+            color: var(--color-secondary);
+            padding-top: var(--spacing-xl);
+            margin-top: var(--spacing-xl);
+        }
+
+        .main-footer .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-xl);
+            padding-bottom: var(--spacing-xl);
+        }
+
+        .footer-col h3 {
+            margin-bottom: var(--spacing-md);
+            color: var(--color-accent);
+            font-size: 1.3rem;
+            border-bottom: 2px solid var(--color-accent);
+            padding-bottom: var(--spacing-sm);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .footer-col a {
+            color: var(--color-secondary);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .footer-col a:hover {
+            color: var(--color-accent);
+            padding-right: 5px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-md);
+        }
+
+        .social-icons a {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: var(--color-secondary);
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+
+        .social-icons a:hover {
+            background: var(--color-accent);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            background: rgba(0, 0, 0, 0.2);
+            text-align: center;
+            padding: var(--spacing-lg);
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .offers-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .order-sidebar {
+                display: none;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-nav {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .search-box {
+                min-width: 100%;
+            }
+
+            .offers-top-bar {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="main-header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="شعار المطعم">
+            </a>
+            <nav class="main-nav">
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="offers.html">العروض اليوم</a></li>
+                        <li><a href="contact.html">تواصل معنا</a></li>
+                        <li>
+                            <a href="orders.html" class="orders-link">
+                                <i class="fa-solid fa-clipboard-list"></i>
+                                طلباتي
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+            </nav>
+            <button class="menu-toggle" onclick="document.querySelector('.mobile-menu').classList.add('active')">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="mobile-menu">
+        <button class="close-menu"
+            onclick="document.querySelector('.mobile-menu').classList.remove('active')">&times;</button>
+        <ul>
+            <li><a href="#" onclick="document.querySelector('.mobile-menu').classList.remove('active')">الرئيسية</a>
+            </li>
+            <li><a href="#" onclick="document.querySelector('.mobile-menu').classList.remove('active')">العروض اليوم</a>
+            </li>
+            <li><a href="#" onclick="document.querySelector('.mobile-menu').classList.remove('active')">تواصل معنا</a>
+            </li>
+            <li><a href="#" onclick="document.querySelector('.mobile-menu').classList.remove('active')">طلباتي</a></li>
+        </ul>
+    </div>
+
+    <main class="container page-content">
+        <div class="offers-top-bar">
+            <div class="search-box">
+                <input type="text" placeholder="ابحث عن وجبتك المفضلة... 🐟">
+                <button class="btn-search">بحث</button>
+            </div>
+            <div class="cart-status" onclick="document.getElementById('checkout-modal').classList.add('active')">
+                <span class="cart-icon">🛒</span>
+                <div class="cart-info">
+                    <span class="cart-count">0 عناصر</span>
+                    <span class="cart-total">0.00 ج.م</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="offers-layout">
+            <section class="products-grid">
+                <div class="product-card">
+                    <img src="https://placehold.co/300x200?text=Fish+Fillet" alt="فيليه سمك">
+                    <div class="product-info">
+                        <h3>فيليه سمك قشر بياض</h3>
+                        <p class="product-desc">طازج ومنظف بعناية، جاهز للقلي أو الشوي.</p>
+                        <div class="product-meta">
+                            <span class="price">280 ج.م / كجم</span>
+                            <button class="btn-add-cart">أضف للطلب ➕</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="https://placehold.co/300x200?text=Shrimp+Jumbo" alt="جمبري جامبو">
+                    <div class="product-info">
+                        <h3>جمبري جامبو بقشره</h3>
+                        <p class="product-desc">جمبري سويس ممتاز، الحجم الكبير.</p>
+                        <div class="product-meta">
+                            <span class="price">450 ج.م / كجم</span>
+                            <button class="btn-add-cart">أضف للطلب ➕</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="https://placehold.co/300x200?text=Seafood+Soup" alt="شوربة سي فود">
+                    <div class="product-info">
+                        <h3>طبق شوربة سي فود مخلية</h3>
+                        <p class="product-desc">تشكيلة رائعة من فواكه البحر مع الكريمة.</p>
+                        <div class="product-meta">
+                            <span class="price">120 ج.م</span>
+                            <button class="btn-add-cart">أضف للطلب ➕</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="https://placehold.co/300x200?text=Grilled+Fish" alt="سمك بوري">
+                    <div class="product-info">
+                        <h3>سمك بوري سنجاري</h3>
+                        <p class="product-desc">مشوي بالخلطة الإسكندراني المميزة.</p>
+                        <div class="product-meta">
+                            <span class="price">180 ج.م / كجم</span>
+                            <button class="btn-add-cart">أضف للطلب ➕</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="https://placehold.co/300x200?text=Calamari" alt="كاليماري">
+                    <div class="product-info">
+                        <h3>طاجن كاليماري</h3>
+                        <p class="product-desc">طاجن كاليماري بالصلصة والخضروات.</p>
+                        <div class="product-meta">
+                            <span class="price">200 ج.م</span>
+                            <button class="btn-add-cart">أضف للطلب ➕</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="https://placehold.co/300x200?text=Family+Meal" alt="وجبة عائلية">
+                    <div class="product-info">
+                        <h3>وجبة اللمة (5 أفراد)</h3>
+                        <p class="product-desc">2 كيلو سمك + 1 كيلو جمبري + أرز وسلطات.</p>
+                        <div class="product-meta">
+                            <span class="price">850 ج.م</span>
+                            <button class="btn-add-cart">أضف للطلب ➕</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <aside class="order-sidebar">
+                <h3>🛒 طلبك الحالي</h3>
+                <div class="cart-items-list">
+                    <div class="empty-cart-msg">
+                        <p>أضف بعض الوجبات اللذيذة!</p>
+                    </div>
+                </div>
+                <div class="cart-footer">
+                    <div class="summary-line">
+                        <span>المجموع:</span>
+                        <span class="final-total">0.00 ج.م</span>
+                    </div>
+                    <button class="btn-primary btn-block btn-checkout"
+                        onclick="document.getElementById('checkout-modal').classList.add('active')">إتمام الطلب
+                        ✅</button>
+                </div>
+            </aside>
+        </div>
+
+        <section class="menu-preview-section">
+            <h3>تصفح المنيو المصور</h3>
+            <div class="menu-images-scroll">
+                <img src="https://placehold.co/350x600?text=Menu+1" alt="منيو 1" class="menu-img">
+                <img src="https://placehold.co/350x600?text=Menu+2" alt="منيو 2" class="menu-img">
+                <img src="https://placehold.co/350x600?text=Menu+3" alt="منيو 3" class="menu-img">
+            </div>
+        </section>
+    </main>
+
+    <div class="modal-overlay" id="checkout-modal">
+        <div class="modal-content">
+            <button class="close-modal"
+                onclick="document.getElementById('checkout-modal').classList.remove('active')">&times;</button>
+            <h2>إتمام الطلب</h2>
+            <form class="checkout-form">
+                <div class="form-group">
+                    <label>الاسم</label>
+                    <input type="text" required placeholder="أدخل اسمك">
+                </div>
+                <div class="form-group">
+                    <label>العنوان بالكامل</label>
+                    <input type="text" required placeholder="أدخل عنوانك بالتفصيل">
+                </div>
+                <div class="form-group">
+                    <label>رقم الهاتف</label>
+                    <input type="tel" required placeholder="أدخل رقم هاتفك">
+                </div>
+                <div class="form-group">
+                    <label>ملاحظات إضافية</label>
+                    <textarea placeholder="أي ملاحظات خاصة بالطلب؟"></textarea>
+                </div>
+                <button type="submit" class="btn-primary btn-block">تأكيد الطلب 🚀</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-col">
+                <h3>عن المطعم</h3>
+                <p>نقدم أشهى المأكولات البحرية الطازجة يومياً.</p>
+            </div>
+            <div class="footer-col">
+                <h3>روابط سريعة</h3>
+                <ul>
+                    <li><a href="#">العروض</a></li>
+                    <li><a href="#">اتصل بنا</a></li>
+                    <li><a href="#">سياسة الخصوصية</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>تواصل معنا</h3>
+                <p>📞 01006581398 - 0227076125</p>
+                <p>📍 13 شارع المحطة سوق البورصه . حلوان , مصر</p>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

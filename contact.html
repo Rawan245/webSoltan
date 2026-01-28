@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تواصل معنا - مطعم السلطان للمأكولات البحرية</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --color-primary: #17355F;
+            --color-secondary: #ffffff;
+            --color-accent: #2070D5;
+            --color-text: #4B5563;
+            --color-bg-light: #F0F4F8;
+            --color-border: #e0e0e0;
+            --font-main: 'Cairo', sans-serif;
+            --spacing-sm: 8px;
+            --spacing-md: 16px;
+            --spacing-lg: 32px;
+            --spacing-xl: 64px;
+            --shadow-card: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --radius-md: 8px;
+            --radius-lg: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--color-bg-light);
+            color: var(--color-text);
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        /* Header */
+        .main-header {
+            background-color: var(--color-secondary);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: var(--spacing-sm) 0;
+        }
+
+        .main-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 70px;
+            width: 70px;
+            transition: transform 0.5s;
+        }
+
+        .logo:hover img {
+            transform: scale(1.05);
+        }
+
+        .main-nav ul {
+            display: flex;
+            gap: var(--spacing-lg);
+            list-style: none;
+        }
+
+        .main-nav a {
+            font-weight: 700;
+            color: var(--color-primary);
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: var(--radius-md);
+            transition: all 0.3s;
+        }
+
+        .main-nav a.active,
+        .main-nav a:hover {
+            color: var(--color-accent);
+            background: rgba(32, 112, 213, 0.1);
+        }
+
+        .orders-link {
+            background: var(--color-accent) !important;
+            color: var(--color-secondary) !important;
+            padding: 10px 20px !important;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .menu-toggle .bar {
+            width: 25px;
+            height: 3px;
+            background-color: var(--color-primary);
+            border-radius: 2px;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 280px;
+            height: 100vh;
+            background-color: var(--color-primary);
+            color: var(--color-secondary);
+            padding: var(--spacing-lg);
+            transition: right 0.3s ease;
+            z-index: 2000;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .close-menu {
+            background: none;
+            border: none;
+            color: var(--color-secondary);
+            font-size: 2rem;
+            cursor: pointer;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .mobile-menu a {
+            color: var(--color-secondary);
+            font-size: 1.2rem;
+            text-decoration: none;
+            padding: 12px;
+            border-radius: var(--radius-md);
+            transition: 0.3s;
+            display: block;
+        }
+
+        .mobile-menu a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            padding-right: 20px;
+        }
+
+        /* Page Content */
+        .page-content {
+            padding-top: var(--spacing-xl);
+            padding-bottom: var(--spacing-xl);
+        }
+
+        /* Contact Section */
+        .contact-section-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+            align-items: start;
+        }
+
+        .contact-info-panel {
+            background: var(--color-secondary);
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-card);
+            border-right: 5px solid var(--color-accent);
+        }
+
+        .contact-info-panel h2 {
+            color: var(--color-primary);
+            font-size: 2rem;
+            margin-bottom: var(--spacing-md);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .contact-info-panel h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 100px;
+            height: 4px;
+            background: var(--color-accent);
+            border-radius: 2px;
+        }
+
+        .contact-info-panel>p {
+            font-size: 1.1rem;
+            margin-bottom: var(--spacing-xl);
+            color: var(--color-text);
+            line-height: 1.8;
+        }
+
+        .info-list {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+            padding: var(--spacing-lg);
+            background: var(--color-bg-light);
+            border-radius: var(--radius-md);
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .info-item:hover {
+            border-color: var(--color-accent);
+            transform: translateX(-5px);
+            box-shadow: var(--shadow-card);
+        }
+
+        .info-icon {
+            font-size: 2rem;
+            background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary) 100%);
+            color: var(--color-secondary);
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(32, 112, 213, 0.3);
+        }
+
+        .info-text {
+            flex: 1;
+        }
+
+        .info-text strong {
+            display: block;
+            color: var(--color-primary);
+            font-size: 1.2rem;
+            margin-bottom: var(--spacing-sm);
+            font-weight: 700;
+        }
+
+        .info-text p {
+            color: var(--color-text);
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        /* Social Links */
+        .social-links-big {
+            display: flex;
+            gap: var(--spacing-md);
+            flex-wrap: wrap;
+            margin-top: var(--spacing-lg);
+        }
+
+        .social-btn {
+            flex: 1;
+            min-width: 150px;
+            padding: 15px 25px;
+            border-radius: var(--radius-md);
+            color: #fff;
+            font-weight: 700;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 1.05rem;
+            transition: all 0.3s;
+            box-shadow: var(--shadow-card);
+        }
+
+        .social-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .fb {
+            background: linear-gradient(135deg, #3b5998 0%, #2d4373 100%);
+        }
+
+        .ig {
+            background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        }
+
+        .wa {
+            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+        }
+
+        /* Map Panel */
+        .map-panel {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+            border: 5px solid var(--color-secondary);
+        }
+
+        .map-container {
+            height: 600px;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Footer */
+        .main-footer {
+            background: linear-gradient(135deg, var(--color-primary) 0%, #0d2545 100%);
+            color: var(--color-secondary);
+            padding-top: var(--spacing-xl);
+            margin-top: var(--spacing-xl);
+        }
+
+        .main-footer .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-xl);
+            padding-bottom: var(--spacing-xl);
+        }
+
+        .footer-col h3 {
+            margin-bottom: var(--spacing-md);
+            color: var(--color-accent);
+            font-size: 1.3rem;
+            border-bottom: 2px solid var(--color-accent);
+            padding-bottom: var(--spacing-sm);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .footer-col a {
+            color: var(--color-secondary);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .footer-col a:hover {
+            color: var(--color-accent);
+            padding-right: 5px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-md);
+        }
+
+        .social-icons a {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: var(--color-secondary);
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+
+        .social-icons a:hover {
+            background: var(--color-accent);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            background: rgba(0, 0, 0, 0.2);
+            text-align: center;
+            padding: var(--spacing-lg);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-nav {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .contact-section-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .map-container {
+                height: 350px;
+            }
+
+            .social-links-big {
+                flex-direction: column;
+            }
+
+            .social-btn {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="main-header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="شعار المطعم">
+            </a>
+            <nav class="main-nav">
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="offers.html">العروض اليوم</a></li>
+                        <li><a href="contact.html">تواصل معنا</a></li>
+                        <li>
+                            <a href="orders.html" class="orders-link">
+                                <i class="fa-solid fa-clipboard-list"></i>
+                                طلباتي
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+            </nav>
+            <button class="menu-toggle" onclick="document.querySelector('.mobile-menu').classList.add('active')">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="mobile-menu">
+        <button class="close-menu"
+            onclick="document.querySelector('.mobile-menu').classList.remove('active')">&times;</button>
+        <ul>
+            <li><a href="#" onclick="document.querySelector('.mobile-menu').classList.remove('active')">الرئيسية</a>
+            </li>
+            <li><a href="#" onclick="document.querySelector('.mobile-menu').classList.remove('active')">العروض اليوم</a>
+            </li>
+            <li><a href="#" onclick="document.querySelector('.mobile-menu').classList.remove('active')">تواصل معنا</a>
+            </li>
+            <li><a href="#" onclick="document.querySelector('.mobile-menu').classList.remove('active')">طلباتي</a></li>
+        </ul>
+    </div>
+
+    <main class="container page-content">
+        <section class="contact-section-layout">
+            <div class="contact-info-panel">
+                <h2>تواصل معنا 📞</h2>
+                <p>نحن سعداء دائماً باستقبال استفساراتكم وطلباتكم. تواصل معنا الآن!</p>
+
+                <div class="info-list">
+                    <div class="info-item">
+                        <span class="info-icon">📍</span>
+                        <div class="info-text">
+                            <strong>العنوان</strong>
+                            <p>13 شارع المحطة سوق البورصه . حلوان , مصر</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <span class="info-icon">📞</span>
+                        <div class="info-text">
+                            <strong>رقم الهاتف</strong>
+                            <p>01006581398 - 0227076125</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <span class="info-icon">⏰</span>
+                        <div class="info-text">
+                            <strong>مواعيد العمل</strong>
+                            <p>خدمة 24 ساعة - نخدمك في أي وقت!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="social-links-big">
+                    <a href="#" class="social-btn fb">
+                        <i class="fa-brands fa-facebook-f"></i> فيسبوك
+                    </a>
+                    <a href="#" class="social-btn ig">
+                        <i class="fa-brands fa-instagram"></i> انستجرام
+                    </a>
+                    <a href="#" class="social-btn wa">
+                        <i class="fa-brands fa-whatsapp"></i> واتساب
+                    </a>
+                </div>
+            </div>
+
+            <div class="map-panel">
+                <div class="map-container">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3410.726525837856!2d29.90928221514755!3d31.20729138147772!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14f5c38a0562fe85%3A0xa613142277861988!2sAlexandria%2C%20Egypt!5e0!3m2!1sen!2sus!4v1625687412345!5m2!1sen!2sus"
+                        allowfullscreen="" loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-col">
+                <h3>عن المطعم</h3>
+                <p>نقدم أشهى المأكولات البحرية الطازجة يومياً.</p>
+            </div>
+            <div class="footer-col">
+                <h3>روابط سريعة</h3>
+                <ul>
+                    <li><a href="#">العروض</a></li>
+                    <li><a href="#">اتصل بنا</a></li>
+                    <li><a href="#">سياسة الخصوصية</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>تواصل معنا</h3>
+                <p>📞 01006581398 - 0227076125</p>
+                <p>📍 13 شارع المحطة سوق البورصه . حلوان , مصر</p>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,15 @@
+{
+    "name": "seafood-restaurant",
+    "version": "1.0.0",
+    "description": "Seafood Restaurant Website",
+    "main": "index.html",
+    "scripts": {
+        "start": "npx http-server -p 8080 -c-1"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {},
+    "devDependencies": {
+        "http-server": "^14.1.1"
+    }
+}
