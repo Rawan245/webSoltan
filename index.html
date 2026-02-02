@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -198,12 +197,9 @@
         }
 
         @keyframes float {
-
-            0%,
-            100% {
+            0%, 100% {
                 transform: translateY(0);
             }
-
             50% {
                 transform: translateY(-15px);
             }
@@ -218,7 +214,6 @@
                 width: 200px;
             }
         }
-
 
         .hero-info {
             display: flex;
@@ -267,13 +262,10 @@
         }
 
         @keyframes pulse {
-
-            0%,
-            100% {
+            0%, 100% {
                 opacity: 1;
                 transform: scale(1);
             }
-
             50% {
                 opacity: 0.5;
                 transform: scale(1.1);
@@ -376,7 +368,6 @@
             border-radius: 10px;
         }
 
-
         .offer-card {
             background: var(--color-secondary);
             border-radius: var(--radius-lg);
@@ -428,7 +419,7 @@
             padding: var(--spacing-lg);
         }
 
-        .card-details h2 {
+        .card-details h3 {
             font-size: 1.2rem;
             margin-bottom: var(--spacing-md);
             color: var(--color-primary);
@@ -451,7 +442,6 @@
             font-size: 1rem;
             font-weight: 400;
         }
-
 
         .btn-primary {
             background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary) 100%);
@@ -555,7 +545,7 @@
             transform: scale(1.05);
         }
 
-        /* Menu Preview */
+        /* Menu Preview Section */
         .menu-preview-section {
             margin-bottom: var(--spacing-xl);
             text-align: center;
@@ -567,42 +557,305 @@
             margin-bottom: var(--spacing-lg);
         }
 
-        .menu-images-scroll {
+        .menu-categories-scroll {
             display: flex;
-            overflow-x: auto;
             gap: var(--spacing-lg);
+            overflow-x: auto;
             padding: var(--spacing-md) 0;
             scroll-behavior: smooth;
-            scrollbar-width: thin;
-            scrollbar-color: var(--color-accent) var(--color-bg-light);
         }
 
-        .menu-images-scroll::-webkit-scrollbar {
+        .menu-categories-scroll::-webkit-scrollbar {
             height: 8px;
         }
 
-        .menu-images-scroll::-webkit-scrollbar-track {
+        .menu-categories-scroll::-webkit-scrollbar-track {
             background: var(--color-bg-light);
             border-radius: 10px;
         }
 
-        .menu-images-scroll::-webkit-scrollbar-thumb {
+        .menu-categories-scroll::-webkit-scrollbar-thumb {
             background: var(--color-accent);
             border-radius: 10px;
         }
 
-        .menu-img {
-            min-width: 320px;
-            height: 500px;
-            object-fit: cover;
+        .menu-category-card {
+            background: var(--color-secondary);
             border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
             box-shadow: var(--shadow-card);
-            border: 3px solid var(--color-border);
-            transition: transform 0.3s;
+            border: 2px solid var(--color-border);
+            transition: all 0.3s;
+            min-width: 380px;
+            max-width: 380px;
         }
 
-        .menu-img:hover {
-            transform: scale(1.05);
+        .menu-category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+            border-color: var(--color-accent);
+        }
+
+        .menu-category-card.special-offers {
+            background: linear-gradient(135deg, #fff9e6 0%, #ffffff 100%);
+            border-color: #f39c12;
+        }
+
+        .menu-category-card h4 {
+            color: var(--color-primary);
+            font-size: 1.2rem;
+            margin-bottom: var(--spacing-md);
+            padding-bottom: var(--spacing-sm);
+            border-bottom: 3px solid var(--color-accent);
+            text-align: right;
+        }
+
+        .menu-category-card.special-offers h4 {
+            color: #e67e22;
+            border-bottom-color: #f39c12;
+        }
+
+        .menu-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        .menu-table thead {
+            background: var(--color-bg-light);
+        }
+
+        .menu-table th {
+            padding: 10px;
+            text-align: right;
+            font-weight: 700;
+            color: var(--color-primary);
+            border-bottom: 2px solid var(--color-accent);
+            font-size: 0.85rem;
+        }
+
+        .menu-table td {
+            padding: 8px 10px;
+            border-bottom: 1px solid var(--color-border);
+            text-align: right;
+        }
+
+        .menu-table td:first-child {
+            color: var(--color-text);
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .menu-table td:last-child {
+            color: #27ae60;
+            font-weight: 700;
+            text-align: left;
+            font-size: 0.85rem;
+        }
+
+        .menu-table tbody tr:hover {
+            background: var(--color-bg-light);
+        }
+
+        .menu-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .highlight-row {
+            background: rgba(241, 196, 15, 0.1) !important;
+        }
+
+        .highlight-row td {
+            font-weight: 700 !important;
+            color: #e67e22 !important;
+        }
+
+        .highlight-row td:last-child {
+            color: #27ae60 !important;
+            font-size: 1rem;
+        }
+
+        /* Order Now Section - Compact */
+        .order-now-section {
+            padding: 40px 0;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .order-form-container {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .order-header {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .order-header h2 {
+            color: white;
+            font-size: 1.4rem;
+            margin-bottom: 3px;
+        }
+
+        .order-header p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.85rem;
+        }
+
+        .order-form {
+            padding: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-label {
+            display: block;
+            color: var(--color-primary);
+            font-weight: 600;
+            margin-bottom: 6px;
+            font-size: 0.85rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px 12px;
+            border: 2px solid #e9ecef;
+            border-radius: var(--radius-md);
+            font-size: 0.9rem;
+            font-family: var(--font-main);
+            transition: all 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--color-accent);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 70px;
+        }
+
+        /* Offer Cards in Order Form */
+        .offers-grid-order {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .offer-card-order {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 8px;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .offer-card-order:hover {
+            border-color: var(--color-accent);
+            box-shadow: 0 2px 6px rgba(32, 112, 213, 0.15);
+        }
+
+        .offer-card-order.selected {
+            border-color: var(--color-accent);
+            background: #e8f5ff;
+        }
+
+        .offer-title {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            margin-bottom: 4px;
+            line-height: 1.2;
+        }
+
+        .offer-price-small {
+            font-size: 0.85rem;
+            color: #27ae60;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .qty-selector {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .qty-btn-small {
+            width: 24px;
+            height: 24px;
+            border-radius: 5px;
+            border: 1.5px solid var(--color-primary);
+            background: white;
+            color: var(--color-primary);
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            line-height: 1;
+        }
+
+        .qty-btn-small:hover {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        .qty-btn-small:active {
+            transform: scale(0.9);
+        }
+
+        .qty-display {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            min-width: 24px;
+            text-align: center;
+        }
+
+        .btn-submit-order {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary) 100%);
+            color: white;
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: var(--font-main);
+        }
+
+        .btn-submit-order:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(32, 112, 213, 0.3);
+        }
+
+        @media (max-width: 600px) {
+            .offers-grid-order {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 400px) {
+            .offers-grid-order {
+                grid-template-columns: 1fr;
+            }
         }
 
         /* Reviews Section */
@@ -760,13 +1013,17 @@
                 grid-template-columns: 1fr;
             }
 
-            .offers-scroll-container {
-                grid-template-columns: 1fr;
-            }
-
             .section-header {
                 flex-direction: column;
                 align-items: flex-start;
+            }
+
+            .order-form {
+                padding: 20px;
+            }
+
+            .menu-category-card {
+                min-width: 300px;
             }
         }
     </style>
@@ -779,20 +1036,17 @@
                 <img src="images/logo.png" alt="شعار المطعم">
             </a>
             <nav class="main-nav">
-                <nav class="main-nav">
-                    <ul>
-                        <li><a href="index.html">الرئيسية</a></li>
-                        <li><a href="offers.html">العروض اليوم</a></li>
-                        <li><a href="contact.html">تواصل معنا</a></li>
-                        <li>
-                            <a href="orders.html" class="orders-link">
-                                <i class="fa-solid fa-clipboard-list"></i>
-                                طلباتي
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-
+                <ul>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="offers.html">العروض اليوم</a></li>
+                    <li><a href="contact.html">تواصل معنا</a></li>
+                    <li>
+                        <a href="orders.html" class="orders-link">
+                            <i class="fa-solid fa-clipboard-list"></i>
+                            طلباتي
+                        </a>
+                    </li>
+                </ul>
             </nav>
             <button class="menu-toggle" aria-label="تبديل القائمة"
                 onclick="document.querySelector('.mobile-menu').classList.add('active')">
@@ -807,14 +1061,10 @@
         <button class="close-menu"
             onclick="document.querySelector('.mobile-menu').classList.remove('active')">&times;</button>
         <ul>
-            <li><a href="#" onclick="document.querySelector('.mobile-menu').classList.remove('active')">الرئيسية</a>
-            </li>
-            <li><a href="#offers" onclick="document.querySelector('.mobile-menu').classList.remove('active')">العروض
-                    اليوم</a></li>
-            <li><a href="#contact" onclick="document.querySelector('.mobile-menu').classList.remove('active')">تواصل
-                    معنا</a></li>
-            <li><a href="#orders" onclick="document.querySelector('.mobile-menu').classList.remove('active')">طلباتي</a>
-            </li>
+            <li><a href="#" onclick="document.querySelector('.mobile-menu').classList.remove('active')">الرئيسية</a></li>
+            <li><a href="#offers" onclick="document.querySelector('.mobile-menu').classList.remove('active')">العروض اليوم</a></li>
+            <li><a href="#contact" onclick="document.querySelector('.mobile-menu').classList.remove('active')">تواصل معنا</a></li>
+            <li><a href="#orders" onclick="document.querySelector('.mobile-menu').classList.remove('active')">طلباتي</a></li>
         </ul>
     </div>
 
@@ -847,7 +1097,7 @@
         <section class="offers-section container" id="offers">
             <div class="section-header">
                 <h2>عروض اليوم المميزة</h2>
-                <a href="#" class="btn-view-all">عرض الكل ⬅</a>
+                <a href="offers.html" class="btn-view-all">عرض الكل ⬅</a>
             </div>
             <div class="offers-scroll-container">
                 <div class="offer-card">
@@ -858,9 +1108,7 @@
                     <div class="card-details">
                         <h3>وجبة عائلية (4 أفراد)</h3>
                         <p class="price"><span class="old-price">600</span> 480 ج.م</p>
-                        <button type="button" class="btn-primary btn-block btn-quick-order">
-                            طلب سريع 🛒
-                        </button>
+                        <button type="button" class="btn-primary btn-block">طلب سريع 🛒</button>
                     </div>
                 </div>
                 <div class="offer-card">
@@ -916,697 +1164,203 @@
 
         <section class="menu-preview-section container">
             <div class="section-header">
-                <h2>قائمة الأسعار</h2>
+                <h2>📋 قائمة الأسعار الكاملة</h2>
             </div>
-            <div class="menu-images-scroll">
-                <img src="https://placehold.co/350x600?text=Menu+1" alt="منيو 1" class="menu-img">
-                <img src="https://placehold.co/350x600?text=Menu+2" alt="منيو 2" class="menu-img">
-                <img src="https://placehold.co/350x600?text=Menu+3" alt="منيو 3" class="menu-img">
+            <div class="menu-categories-scroll">
+                <!-- الأسماك الطازجة -->
+                <div class="menu-category-card">
+                    <h4>🐟 الأسماك الطازجة</h4>
+                    <table class="menu-table">
+                        <thead>
+                            <tr>
+                                <th>الصنف</th>
+                                <th>السعر (جنيه)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>بلطي</td><td>68 / 70 / 75</td></tr>
+                            <tr><td>بلطي أسواني دباشي</td><td>100</td></tr>
+                            <tr><td>شبار أسواني</td><td>80</td></tr>
+                            <tr><td>بوري</td><td>140 / 190 / 210</td></tr>
+                            <tr><td>قاروص دنيس</td><td>450</td></tr>
+                            <tr><td>لوت</td><td>195</td></tr>
+                            <tr><td>قشر بياض</td><td>180</td></tr>
+                            <tr><td>مرجان أبو شرارة</td><td>160</td></tr>
+                            <tr><td>شعور</td><td>350</td></tr>
+                            <tr><td>بهار</td><td>175</td></tr>
+                            <tr><td>بياض نيلي</td><td>170</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- الجمبري والمأكولات البحرية -->
+                <div class="menu-category-card">
+                    <h4>🦐 الجمبري والمأكولات البحرية</h4>
+                    <table class="menu-table">
+                        <thead>
+                            <tr>
+                                <th>الصنف</th>
+                                <th>السعر (جنيه)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>جمبري بلدي سويسي</td><td>200 / 220</td></tr>
+                            <tr><td>جمبري بلدي</td><td>200</td></tr>
+                            <tr><td>جمبري بلدي</td><td>220</td></tr>
+                            <tr><td>جمبري بلدي خشابي</td><td>320</td></tr>
+                            <tr><td>جمبري بلدي سويسي</td><td>550</td></tr>
+                            <tr><td>جمبري بلدي جامبو</td><td>700</td></tr>
+                            <tr><td>كالماري بلدي</td><td>180 / 200 / 300</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- كابوريا ومكرونة البحر -->
+                <div class="menu-category-card">
+                    <h4>🦀 كابوريا ومكرونة البحر</h4>
+                    <table class="menu-table">
+                        <thead>
+                            <tr>
+                                <th>الصنف</th>
+                                <th>السعر (جنيه)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>كيلو وربع مكرونة مغازل كبيرة</td><td>100</td></tr>
+                            <tr><td>كيلو وربع كابوريا نتي</td><td>100</td></tr>
+                            <tr><td>كيلو ونص كابوريا دكر</td><td>100</td></tr>
+                            <tr><td>كيلو وربع مكرونة خليجي</td><td>100</td></tr>
+                            <tr><td>كيلو ونص مرجان خليجي</td><td>100</td></tr>
+                            <tr><td>كابوريا نتي</td><td>250</td></tr>
+                            <tr><td>كابوريا دكر</td><td>150</td></tr>
+                            <tr><td>مكرونة سويسي</td><td>150</td></tr>
+                            <tr><td>مكرونة دمياطي</td><td>125</td></tr>
+                            <tr><td>مكرونة عيون مجمدة</td><td>85</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- أصناف متنوعة -->
+                <div class="menu-category-card">
+                    <h4>🐠 أصناف متنوعة</h4>
+                    <table class="menu-table">
+                        <thead>
+                            <tr>
+                                <th>الصنف</th>
+                                <th>السعر (جنيه)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>تونة بلدي عسل نحل</td><td>120</td></tr>
+                            <tr><td>تونة شك</td><td>120</td></tr>
+                            <tr><td>بساريا</td><td>25</td></tr>
+                            <tr><td>سردين سويسي</td><td>160</td></tr>
+                            <tr><td>سردين عماني</td><td>55</td></tr>
+                            <tr><td>لاشتا</td><td>100</td></tr>
+                            <tr><td>ماكريل</td><td>225</td></tr>
+                            <tr><td>سهلية سويسي بالشوي</td><td>150</td></tr>
+                            <tr><td>مرجان سويسي</td><td>120 / 150</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- عروض المستوى -->
+                <div class="menu-category-card special-offers">
+                    <h4>⭐ عروض المستوى</h4>
+                    <table class="menu-table">
+                        <thead>
+                            <tr>
+                                <th>الصنف</th>
+                                <th>السعر (جنيه)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>كيلو مكرونة مقلي</td><td>140</td></tr>
+                            <tr><td>كيلو بلطي مشوي (3-4 سمكات)</td><td>85</td></tr>
+                            <tr><td>كيلو بلطي مقلي</td><td>85</td></tr>
+                            <tr><td>كيلو سهلية مشوي</td><td>150</td></tr>
+                            <tr class="highlight-row"><td>8 سندوتش جمبري</td><td>200</td></tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </section>
 
-        أضف هذا القسم قبل قسم التقييمات (قبل <section class="reviews-section container">)
-
-        <!-- Order Now Section -->
+        <!-- Order Now Section - Compact -->
         <section class="order-now-section container" id="order">
             <div class="order-form-container">
-                <!-- Header -->
                 <div class="order-header">
-                    <div class="delivery-icon">🛵</div>
-                    <h2>اطلب الآن</h2>
-                    <p>وجبتك المفضلة توصلك في أسرع وقت</p>
+                    <h2>اطلب الآن 🛵</h2>
+                    <p>اختر طلبك وسنوصله لك في أسرع وقت</p>
                 </div>
 
-                <!-- Form -->
                 <form class="order-form">
-                    <!-- Offers Section -->
-                    <div class="form-section">
-                        <div class="section-title-form">
-                            <i class="fas fa-fish"></i>
-                            <h3>اختر العروض المفضلة</h3>
-                        </div>
-
-                        <div class="offers-grid-form">
-                            <!-- Offer 1 -->
-                            <div class="offer-item-form">
-                                <label class="offer-checkbox">
-                                    <input type="checkbox" name="offer" value="family">
-                                    <div class="offer-details-form">
-                                        <span class="offer-name">وجبة عائلية (4 أفراد)</span>
-                                        <span class="offer-price-form">
-                                            480 ج.م
-                                            <span class="old-price-form">600 ج.م</span>
-                                        </span>
-                                        <span class="discount-badge-form">خصم 20%</span>
-                                    </div>
-                                </label>
-                                <div class="qty-control">
-                                    <button type="button" class="qty-btn minus">-</button>
-                                    <input type="number" class="qty-input" value="1" min="1" max="99" readonly>
-                                    <button type="button" class="qty-btn plus">+</button>
+                    <div class="form-group">
+                        <label class="form-label">اختر العروض</label>
+                        <div class="offers-grid-order">
+                            <div class="offer-card-order" data-offer="family">
+                                <div class="offer-title">وجبة عائلية</div>
+                                <div class="offer-price-small">480 ج.م</div>
+                                <div class="qty-selector">
+                                    <button type="button" class="qty-btn-small qty-minus">-</button>
+                                    <span class="qty-display">0</span>
+                                    <button type="button" class="qty-btn-small qty-plus">+</button>
                                 </div>
                             </div>
 
-                            <!-- Offer 2 -->
-                            <div class="offer-item-form">
-                                <label class="offer-checkbox">
-                                    <input type="checkbox" name="offer" value="shrimp">
-                                    <div class="offer-details-form">
-                                        <span class="offer-name">كيلو جمبري جامبو</span>
-                                        <span class="offer-price-form">350 ج.م</span>
-                                    </div>
-                                </label>
-                                <div class="qty-control">
-                                    <button type="button" class="qty-btn minus">-</button>
-                                    <input type="number" class="qty-input" value="1" min="1" max="99" readonly>
-                                    <button type="button" class="qty-btn plus">+</button>
+                            <div class="offer-card-order" data-offer="shrimp">
+                                <div class="offer-title">جمبري جامبو</div>
+                                <div class="offer-price-small">350 ج.م</div>
+                                <div class="qty-selector">
+                                    <button type="button" class="qty-btn-small qty-minus">-</button>
+                                    <span class="qty-display">0</span>
+                                    <button type="button" class="qty-btn-small qty-plus">+</button>
                                 </div>
                             </div>
 
-                            <!-- Offer 3 -->
-                            <div class="offer-item-form">
-                                <label class="offer-checkbox">
-                                    <input type="checkbox" name="offer" value="crab">
-                                    <div class="offer-details-form">
-                                        <span class="offer-name">طاجن كابوريا</span>
-                                        <span class="offer-price-form">220 ج.م</span>
-                                    </div>
-                                </label>
-                                <div class="qty-control">
-                                    <button type="button" class="qty-btn minus">-</button>
-                                    <input type="number" class="qty-input" value="1" min="1" max="99" readonly>
-                                    <button type="button" class="qty-btn plus">+</button>
+                            <div class="offer-card-order" data-offer="crab">
+                                <div class="offer-title">طاجن كابوريا</div>
+                                <div class="offer-price-small">220 ج.م</div>
+                                <div class="qty-selector">
+                                    <button type="button" class="qty-btn-small qty-minus">-</button>
+                                    <span class="qty-display">0</span>
+                                    <button type="button" class="qty-btn-small qty-plus">+</button>
                                 </div>
                             </div>
 
-                            <!-- Offer 4 -->
-                            <div class="offer-item-form">
-                                <label class="offer-checkbox">
-                                    <input type="checkbox" name="offer" value="mix">
-                                    <div class="offer-details-form">
-                                        <span class="offer-name">ميكس سي فود جريل</span>
-                                        <span class="offer-price-form">400 ج.م</span>
-                                    </div>
-                                </label>
-                                <div class="qty-control">
-                                    <button type="button" class="qty-btn minus">-</button>
-                                    <input type="number" class="qty-input" value="1" min="1" max="99" readonly>
-                                    <button type="button" class="qty-btn plus">+</button>
+                            <div class="offer-card-order" data-offer="mix">
+                                <div class="offer-title">ميكس سي فود</div>
+                                <div class="offer-price-small">400 ج.م</div>
+                                <div class="qty-selector">
+                                    <button type="button" class="qty-btn-small qty-minus">-</button>
+                                    <span class="qty-display">0</span>
+                                    <button type="button" class="qty-btn-small qty-plus">+</button>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Notes Section -->
-                    <div class="form-section">
-                        <div class="section-title-form">
-                            <i class="fas fa-comment-dots"></i>
-                            <h3>ملاحظات إضافية</h3>
-                        </div>
-                        <div class="form-group-custom">
-                            <textarea class="form-control-custom" placeholder="أضف أي ملاحظات أو تفاصيل إضافية هنا..."
-                                rows="3"></textarea>
-                        </div>
+                    <div class="form-group">
+                        <label class="form-label">الاسم</label>
+                        <input type="text" class="form-control" placeholder="أدخل اسمك الكامل" required>
                     </div>
 
-                    <!-- Contact Section -->
-                    <div class="form-section">
-                        <div class="section-title-form">
-                            <i class="fas fa-user-circle"></i>
-                            <h3>بياناتك</h3>
-                        </div>
-
-                        <div class="form-group-custom">
-                            <label class="form-label-custom">
-                                <i class="fas fa-user"></i>
-                                الاسم
-                            </label>
-                            <input type="text" class="form-control-custom" placeholder="أدخل اسمك الكامل" required>
-                        </div>
-
-                        <div class="form-group-custom">
-                            <label class="form-label-custom">
-                                <i class="fas fa-phone"></i>
-                                رقم الهاتف
-                            </label>
-                            <input type="tel" class="form-control-custom" placeholder="01xxxxxxxxx" required>
-                        </div>
-
-                        <div class="form-group-custom">
-                            <label class="form-label-custom">
-                                <i class="fas fa-map-marker-alt"></i>
-                                العنوان بالتفصيل
-                            </label>
-                            <textarea class="form-control-custom"
-                                placeholder="أدخل عنوانك الكامل (الشارع، رقم المبنى، الدور...)" required
-                                rows="3"></textarea>
-                        </div>
+                    <div class="form-group">
+                        <label class="form-label">رقم الهاتف</label>
+                        <input type="tel" class="form-control" placeholder="01xxxxxxxxx" required>
                     </div>
 
-                    <!-- Submit Button -->
+                    <div class="form-group">
+                        <label class="form-label">العنوان بالتفصيل</label>
+                        <textarea class="form-control" placeholder="أدخل عنوانك الكامل" required rows="2"></textarea>
+                    </div>
+
                     <button type="submit" class="btn-submit-order">
-                        <span>إرسال الطلب 🚀</span>
+                        إرسال الطلب 🚀
                     </button>
-
-                    <!-- Features Box -->
-                    <div class="features-box">
-                        <ul class="features-list">
-                            <li>
-                                <i class="fas fa-shipping-fast"></i>
-                                <span>توصيل سريع</span>
-                            </li>
-                            <li>
-                                <i class="fas fa-fish"></i>
-                                <span>أسماك طازجة</span>
-                            </li>
-                            <li>
-                                <i class="fas fa-shield-alt"></i>
-                                <span>دفع آمن</span>
-                            </li>
-                            <li>
-                                <i class="fas fa-headset"></i>
-                                <span>دعم 24/7</span>
-                            </li>
-                        </ul>
-                    </div>
                 </form>
             </div>
         </section>
-
-        <style>
-            /* Order Now Section Styles */
-            .order-now-section {
-                padding: 60px 0;
-                margin-bottom: var(--spacing-xl);
-            }
-
-            .order-form-container {
-                background: white;
-                border-radius: 24px;
-                overflow: hidden;
-                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-                max-width: 900px;
-                margin: 0 auto;
-            }
-
-            /* Header Section */
-            .order-header {
-                background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
-                padding: 50px 40px;
-                text-align: center;
-                position: relative;
-                overflow: hidden;
-            }
-
-            .order-header::before {
-                content: '';
-                position: absolute;
-                top: -50%;
-                left: -50%;
-                width: 200%;
-                height: 200%;
-                background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
-                animation: wave 15s infinite linear;
-            }
-
-            @keyframes wave {
-                0% {
-                    transform: rotate(0deg);
-                }
-
-                100% {
-                    transform: rotate(360deg);
-                }
-            }
-
-            .order-header h2 {
-                color: white;
-                font-size: 2.5rem;
-                font-weight: 700;
-                margin-bottom: 10px;
-                position: relative;
-                z-index: 1;
-                text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            }
-
-            .order-header p {
-                color: rgba(255, 255, 255, 0.95);
-                font-size: 1.1rem;
-                position: relative;
-                z-index: 1;
-            }
-
-            .delivery-icon {
-                font-size: 3rem;
-                margin-bottom: 15px;
-                animation: bounce 2s infinite;
-            }
-
-            @keyframes bounce {
-
-                0%,
-                100% {
-                    transform: translateY(0);
-                }
-
-                50% {
-                    transform: translateY(-10px);
-                }
-            }
-
-            /* Form Section */
-            .order-form {
-                padding: 50px 40px;
-            }
-
-            .form-section {
-                margin-bottom: 35px;
-            }
-
-            .section-title-form {
-                display: flex;
-                align-items: center;
-                gap: 12px;
-                margin-bottom: 20px;
-                padding-bottom: 12px;
-                border-bottom: 2px solid #f0f0f0;
-            }
-
-            .section-title-form i {
-                color: var(--color-primary);
-                font-size: 1.5rem;
-            }
-
-            .section-title-form h3 {
-                color: var(--color-primary);
-                font-size: 1.3rem;
-                font-weight: 600;
-            }
-
-            /* Offers Grid */
-            .offers-grid-form {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                gap: 20px;
-                margin-bottom: 25px;
-            }
-
-            .offer-item-form {
-                background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-                border-radius: 16px;
-                padding: 20px;
-                border: 2px solid transparent;
-                transition: all 0.3s ease;
-                cursor: pointer;
-                position: relative;
-                overflow: hidden;
-            }
-
-            .offer-item-form::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                right: 0;
-                width: 0;
-                height: 100%;
-                background: linear-gradient(135deg, rgba(23, 53, 95, 0.1) 0%, rgba(32, 112, 213, 0.1) 100%);
-                transition: width 0.3s ease;
-            }
-
-            .offer-item-form:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 10px 30px rgba(23, 53, 95, 0.2);
-            }
-
-            .offer-item-form:hover::before {
-                width: 100%;
-            }
-
-            .offer-item-form.selected {
-                border-color: var(--color-accent);
-                background: linear-gradient(135deg, #e8f5f1 0%, #d4edda 100%);
-            }
-
-            .offer-checkbox {
-                display: flex;
-                align-items: flex-start;
-                gap: 12px;
-                position: relative;
-                z-index: 1;
-            }
-
-            .offer-checkbox input[type="checkbox"] {
-                width: 24px;
-                height: 24px;
-                cursor: pointer;
-                accent-color: var(--color-accent);
-                margin-top: 2px;
-                flex-shrink: 0;
-            }
-
-            .offer-details-form {
-                flex: 1;
-            }
-
-            .offer-name {
-                font-weight: 600;
-                color: var(--color-primary);
-                font-size: 1.1rem;
-                margin-bottom: 8px;
-                display: block;
-            }
-
-            .offer-price-form {
-                color: #27ae60;
-                font-size: 1.3rem;
-                font-weight: 700;
-                display: block;
-            }
-
-            .old-price-form {
-                text-decoration: line-through;
-                color: #999;
-                font-size: 1rem;
-                margin-left: 8px;
-            }
-
-            .discount-badge-form {
-                background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
-                color: white;
-                padding: 4px 12px;
-                border-radius: 20px;
-                font-size: 0.85rem;
-                font-weight: 600;
-                display: inline-block;
-                margin-top: 8px;
-            }
-
-            /* Quantity Control */
-            .qty-control {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 10px;
-                margin-top: 15px;
-                padding-top: 15px;
-                border-top: 1px solid rgba(0, 0, 0, 0.1);
-                position: relative;
-                z-index: 1;
-            }
-
-            .qty-btn {
-                width: 36px;
-                height: 36px;
-                border-radius: 50%;
-                border: 2px solid var(--color-primary);
-                background: white;
-                color: var(--color-primary);
-                font-size: 1.3rem;
-                font-weight: bold;
-                cursor: pointer;
-                transition: all 0.3s ease;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                line-height: 1;
-            }
-
-            .qty-btn:hover {
-                background: var(--color-primary);
-                color: white;
-                transform: scale(1.1);
-            }
-
-            .qty-btn:active {
-                transform: scale(0.95);
-            }
-
-            .qty-btn.minus {
-                border-color: #dc3545;
-                color: #dc3545;
-            }
-
-            .qty-btn.minus:hover {
-                background: #dc3545;
-                color: white;
-            }
-
-            .qty-btn.plus {
-                border-color: #27ae60;
-                color: #27ae60;
-            }
-
-            .qty-btn.plus:hover {
-                background: #27ae60;
-                color: white;
-            }
-
-            .qty-input {
-                width: 60px;
-                height: 36px;
-                text-align: center;
-                border: 2px solid #e9ecef;
-                border-radius: 8px;
-                font-size: 1.1rem;
-                font-weight: 600;
-                color: var(--color-primary);
-                background: #f8f9fa;
-                font-family: var(--font-main);
-            }
-
-            .qty-input:focus {
-                outline: none;
-            }
-
-            /* Form Groups */
-            .form-group-custom {
-                margin-bottom: 25px;
-            }
-
-            .form-label-custom {
-                display: block;
-                color: #2c3e50;
-                font-weight: 600;
-                margin-bottom: 10px;
-                font-size: 1.05rem;
-            }
-
-            .form-label-custom i {
-                color: var(--color-primary);
-                margin-left: 8px;
-            }
-
-            .form-control-custom {
-                width: 100%;
-                padding: 15px 20px;
-                border: 2px solid #e9ecef;
-                border-radius: 12px;
-                font-size: 1rem;
-                font-family: var(--font-main);
-                transition: all 0.3s ease;
-                background: white;
-            }
-
-            .form-control-custom:focus {
-                outline: none;
-                border-color: var(--color-accent);
-                box-shadow: 0 0 0 4px rgba(32, 112, 213, 0.1);
-            }
-
-            textarea.form-control-custom {
-                resize: vertical;
-                min-height: 100px;
-            }
-
-            /* Submit Button */
-            .btn-submit-order {
-                width: 100%;
-                padding: 18px;
-                background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary) 100%);
-                color: white;
-                border: none;
-                border-radius: 12px;
-                font-size: 1.3rem;
-                font-weight: 700;
-                cursor: pointer;
-                transition: all 0.3s ease;
-                box-shadow: 0 8px 20px rgba(32, 112, 213, 0.3);
-                position: relative;
-                overflow: hidden;
-                font-family: var(--font-main);
-            }
-
-            .btn-submit-order::before {
-                content: '';
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                width: 0;
-                height: 0;
-                background: rgba(255, 255, 255, 0.2);
-                border-radius: 50%;
-                transform: translate(-50%, -50%);
-                transition: width 0.6s, height 0.6s;
-            }
-
-            .btn-submit-order:hover::before {
-                width: 300px;
-                height: 300px;
-            }
-
-            .btn-submit-order:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 12px 30px rgba(32, 112, 213, 0.4);
-            }
-
-            .btn-submit-order:active {
-                transform: translateY(0);
-            }
-
-            .btn-submit-order span {
-                position: relative;
-                z-index: 1;
-            }
-
-            /* Features Section */
-            .features-box {
-                background: linear-gradient(135deg, #fff7e6 0%, #ffe5b4 100%);
-                border-radius: 16px;
-                padding: 25px;
-                margin-top: 30px;
-                border-right: 5px solid #ffa500;
-            }
-
-            .features-list {
-                list-style: none;
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-                gap: 15px;
-                padding: 0;
-                margin: 0;
-            }
-
-            .features-list li {
-                display: flex;
-                align-items: center;
-                gap: 10px;
-                color: #2c3e50;
-                font-weight: 500;
-            }
-
-            .features-list li i {
-                color: #ffa500;
-                font-size: 1.2rem;
-            }
-
-            /* Responsive */
-            @media (max-width: 768px) {
-                .order-header {
-                    padding: 40px 25px;
-                }
-
-                .order-header h2 {
-                    font-size: 2rem;
-                }
-
-                .order-form {
-                    padding: 30px 25px;
-                }
-
-                .offers-grid-form {
-                    grid-template-columns: 1fr;
-                }
-
-                .features-list {
-                    grid-template-columns: 1fr;
-                }
-            }
-        </style>
-
-        <!-- <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                // تفعيل الـ selected class عند اختيار العرض
-                document.querySelectorAll('.order-now-section .offer-item-form input[type="checkbox"]').forEach(checkbox => {
-                    checkbox.addEventListener('change', function () {
-                        const offerItem = this.closest('.offer-item-form');
-                        if (this.checked) {
-                            offerItem.classList.add('selected');
-                        } else {
-                            offerItem.classList.remove('selected');
-                        }
-                    });
-                });
-
-                // التحكم في الكمية
-                document.querySelectorAll('.order-now-section .qty-btn').forEach(btn => {
-                    btn.addEventListener('click', function (e) {
-                        e.preventDefault();
-                        e.stopPropagation();
-
-                        const offerItem = this.closest('.offer-item-form');
-                        const qtyInput = offerItem.querySelector('.qty-input');
-                        const checkbox = offerItem.querySelector('input[type="checkbox"]');
-                        let value = parseInt(qtyInput.value);
-
-                        if (this.classList.contains('plus')) {
-                            if (value < 99) {
-                                value++;
-                            }
-                        } else if (this.classList.contains('minus')) {
-                            if (value > 1) {
-                                value--;
-                            }
-                        }
-
-                        qtyInput.value = value;
-
-                        // تفعيل الـ checkbox تلقائياً عند تغيير الكمية
-                        if (!checkbox.checked) {
-                            checkbox.checked = true;
-                            offerItem.classList.add('selected');
-                        }
-                    });
-                });
-
-                // معالجة إرسال النموذج
-                const orderForm = document.querySelector('.order-now-section .order-form');
-                if (orderForm) {
-                    orderForm.addEventListener('submit', function (e) {
-                        e.preventDefault();
-
-                        const selectedOffers = [];
-                        document.querySelectorAll('.order-now-section .offer-item-form').forEach(item => {
-                            const checkbox = item.querySelector('input[type="checkbox"]');
-                            if (checkbox.checked) {
-                                const offerName = item.querySelector('.offer-name').textContent;
-                                const quantity = item.querySelector('.qty-input').value;
-                                selectedOffers.push(`${offerName} × ${quantity}`);
-                            }
-                        });
-
-                        if (selectedOffers.length === 0) {
-                            alert('الرجاء اختيار عرض واحد على الأقل! 🐟');
-                            return;
-                        }
-
-                        const orderSummary = `تم إرسال طلبك بنجاح! 🎉\n\nالعروض المختارة:\n${selectedOffers.join('\n')}\n\nسنتواصل معك قريباً.`;
-                        alert(orderSummary);
-
-                        this.reset();
-
-                        // إعادة تعيين الكميات إلى 1
-                        document.querySelectorAll('.order-now-section .qty-input').forEach(input => {
-                            input.value = 1;
-                        });
-
-                        // إزالة الـ selected class من جميع العروض
-                        document.querySelectorAll('.order-now-section .offer-item-form').forEach(item => {
-                            item.classList.remove('selected');
-                        });
-                    });
-                }
-            });
-        </script> -->
 
         <section class="reviews-section container">
             <h2>قالوا عنا ⭐</h2>
@@ -1659,6 +1413,70 @@
             <p>&copy; 2024 جميع الحقوق محفوظة لمطعم المأكولات البحرية.</p>
         </div>
     </footer>
-</body>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Quantity selectors
+            const offerCards = document.querySelectorAll('.offer-card-order');
+            
+            offerCards.forEach(card => {
+                const minusBtn = card.querySelector('.qty-minus');
+                const plusBtn = card.querySelector('.qty-plus');
+                const qtyDisplay = card.querySelector('.qty-display');
+                
+                plusBtn.addEventListener('click', function() {
+                    let qty = parseInt(qtyDisplay.textContent);
+                    if (qty < 99) {
+                        qty++;
+                        qtyDisplay.textContent = qty;
+                        card.classList.add('selected');
+                    }
+                });
+                
+                minusBtn.addEventListener('click', function() {
+                    let qty = parseInt(qtyDisplay.textContent);
+                    if (qty > 0) {
+                        qty--;
+                        qtyDisplay.textContent = qty;
+                        if (qty === 0) {
+                            card.classList.remove('selected');
+                        }
+                    }
+                });
+            });
+
+            // Form submission
+            const orderForm = document.querySelector('.order-form');
+            if (orderForm) {
+                orderForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Collect selected items
+                    let selectedItems = [];
+                    offerCards.forEach(card => {
+                        const qty = parseInt(card.querySelector('.qty-display').textContent);
+                        if (qty > 0) {
+                            const title = card.querySelector('.offer-title').textContent;
+                            selectedItems.push(`${title} × ${qty}`);
+                        }
+                    });
+                    
+                    if (selectedItems.length === 0) {
+                        alert('الرجاء اختيار عرض واحد على الأقل! 🐟');
+                        return;
+                    }
+                    
+                    alert(`تم إرسال طلبك بنجاح! 🎉\n\nالطلبات:\n${selectedItems.join('\n')}\n\nسنتواصل معك قريباً.`);
+                    this.reset();
+                    
+                    // Reset quantities
+                    offerCards.forEach(card => {
+                        card.querySelector('.qty-display').textContent = '0';
+                        card.classList.remove('selected');
+                    });
+                });
+            }
+        });
+    </script>
+</body>
 </html>

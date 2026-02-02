@@ -375,6 +375,47 @@
             margin-bottom: var(--spacing-lg);
         }
 
+        .cart-item {
+            background: var(--color-bg-light);
+            padding: 12px;
+            border-radius: var(--radius-md);
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            font-weight: 600;
+            color: var(--color-primary);
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+        }
+
+        .cart-item-price {
+            color: #27ae60;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .cart-item-remove {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
         .empty-cart-msg {
             text-align: center;
             color: #999;
@@ -438,35 +479,102 @@
             margin-bottom: var(--spacing-lg);
         }
 
-        .menu-images-scroll {
-            display: flex;
-            overflow-x: auto;
+        /* Menu Tables Styles */
+        .menu-table-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: var(--spacing-lg);
-            padding: var(--spacing-md) 0;
-            scroll-behavior: smooth;
+            margin-top: var(--spacing-lg);
         }
 
-        .menu-images-scroll::-webkit-scrollbar {
-            height: 8px;
-        }
-
-        .menu-images-scroll::-webkit-scrollbar-track {
-            background: var(--color-bg-light);
-            border-radius: 10px;
-        }
-
-        .menu-images-scroll::-webkit-scrollbar-thumb {
-            background: var(--color-accent);
-            border-radius: 10px;
-        }
-
-        .menu-img {
-            min-width: 320px;
-            height: 500px;
-            object-fit: cover;
+        .menu-category {
+            background: var(--color-secondary);
             border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
             box-shadow: var(--shadow-card);
-            border: 3px solid var(--color-border);
+            border: 2px solid var(--color-border);
+            transition: all 0.3s;
+        }
+
+        .menu-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+            border-color: var(--color-accent);
+        }
+
+        .menu-category.special-offers {
+            background: linear-gradient(135deg, #fff9e6 0%, #ffffff 100%);
+            border-color: #f39c12;
+        }
+
+        .menu-category h4 {
+            color: var(--color-primary);
+            font-size: 1.3rem;
+            margin-bottom: var(--spacing-md);
+            padding-bottom: var(--spacing-sm);
+            border-bottom: 3px solid var(--color-accent);
+        }
+
+        .menu-category.special-offers h4 {
+            color: #e67e22;
+            border-bottom-color: #f39c12;
+        }
+
+        .menu-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+
+        .menu-table thead {
+            background: var(--color-bg-light);
+        }
+
+        .menu-table th {
+            padding: 12px;
+            text-align: right;
+            font-weight: 700;
+            color: var(--color-primary);
+            border-bottom: 2px solid var(--color-accent);
+        }
+
+        .menu-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--color-border);
+            text-align: right;
+        }
+
+        .menu-table td:first-child {
+            color: var(--color-text);
+            font-weight: 600;
+        }
+
+        .menu-table td:last-child {
+            color: #27ae60;
+            font-weight: 700;
+            text-align: left;
+        }
+
+        .menu-table tbody tr:hover {
+            background: var(--color-bg-light);
+        }
+
+        .menu-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .highlight-row {
+            background: rgba(241, 196, 15, 0.1) !important;
+        }
+
+        .highlight-row td {
+            font-weight: 700 !important;
+            color: #e67e22 !important;
+        }
+
+        .highlight-row td:last-child {
+            color: #27ae60 !important;
+            font-size: 1.1rem;
         }
 
         /* Modal */
@@ -643,6 +751,10 @@
             .products-grid {
                 grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
             }
+
+            .menu-table-container {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 768px) {
@@ -672,20 +784,17 @@
                 <img src="images/logo.png" alt="شعار المطعم">
             </a>
             <nav class="main-nav">
-                <nav class="main-nav">
-                    <ul>
-                        <li><a href="index.html">الرئيسية</a></li>
-                        <li><a href="offers.html">العروض اليوم</a></li>
-                        <li><a href="contact.html">تواصل معنا</a></li>
-                        <li>
-                            <a href="orders.html" class="orders-link">
-                                <i class="fa-solid fa-clipboard-list"></i>
-                                طلباتي
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-
+                <ul>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="offers.html">العروض اليوم</a></li>
+                    <li><a href="contact.html">تواصل معنا</a></li>
+                    <li>
+                        <a href="orders.html" class="orders-link">
+                            <i class="fa-solid fa-clipboard-list"></i>
+                            طلباتي
+                        </a>
+                    </li>
+                </ul>
             </nav>
             <button class="menu-toggle" onclick="document.querySelector('.mobile-menu').classList.add('active')">
                 <span class="bar"></span>
@@ -699,13 +808,13 @@
         <button class="close-menu"
             onclick="document.querySelector('.mobile-menu').classList.remove('active')">&times;</button>
         <ul>
-            <li><a href="#" onclick="document.querySelector('.mobile-menu').classList.remove('active')">الرئيسية</a>
+            <li><a href="index.html" onclick="document.querySelector('.mobile-menu').classList.remove('active')">الرئيسية</a>
             </li>
-            <li><a href="#" onclick="document.querySelector('.mobile-menu').classList.remove('active')">العروض اليوم</a>
+            <li><a href="offers.html" onclick="document.querySelector('.mobile-menu').classList.remove('active')">العروض اليوم</a>
             </li>
-            <li><a href="#" onclick="document.querySelector('.mobile-menu').classList.remove('active')">تواصل معنا</a>
+            <li><a href="contact.html" onclick="document.querySelector('.mobile-menu').classList.remove('active')">تواصل معنا</a>
             </li>
-            <li><a href="#" onclick="document.querySelector('.mobile-menu').classList.remove('active')">طلباتي</a></li>
+            <li><a href="orders.html" onclick="document.querySelector('.mobile-menu').classList.remove('active')">طلباتي</a></li>
         </ul>
     </div>
 
@@ -718,8 +827,8 @@
             <div class="cart-status" onclick="document.getElementById('checkout-modal').classList.add('active')">
                 <span class="cart-icon">🛒</span>
                 <div class="cart-info">
-                    <span class="cart-count">0 عناصر</span>
-                    <span class="cart-total">0.00 ج.م</span>
+                    <span class="cart-count" id="cartCount">0 عناصر</span>
+                    <span class="cart-total" id="cartTotalDisplay">0.00 ج.م</span>
                 </div>
             </div>
         </div>
@@ -733,7 +842,7 @@
                         <p class="product-desc">طازج ومنظف بعناية، جاهز للقلي أو الشوي.</p>
                         <div class="product-meta">
                             <span class="price">280 ج.م / كجم</span>
-                            <button class="btn-add-cart">أضف للطلب ➕</button>
+                            <button class="btn-add-cart" onclick="addToCart('فيليه سمك قشر بياض', 280)">أضف للطلب ➕</button>
                         </div>
                     </div>
                 </div>
@@ -745,7 +854,7 @@
                         <p class="product-desc">جمبري سويس ممتاز، الحجم الكبير.</p>
                         <div class="product-meta">
                             <span class="price">450 ج.م / كجم</span>
-                            <button class="btn-add-cart">أضف للطلب ➕</button>
+                            <button class="btn-add-cart" onclick="addToCart('جمبري جامبو بقشره', 450)">أضف للطلب ➕</button>
                         </div>
                     </div>
                 </div>
@@ -757,7 +866,7 @@
                         <p class="product-desc">تشكيلة رائعة من فواكه البحر مع الكريمة.</p>
                         <div class="product-meta">
                             <span class="price">120 ج.م</span>
-                            <button class="btn-add-cart">أضف للطلب ➕</button>
+                            <button class="btn-add-cart" onclick="addToCart('طبق شوربة سي فود مخلية', 120)">أضف للطلب ➕</button>
                         </div>
                     </div>
                 </div>
@@ -769,7 +878,7 @@
                         <p class="product-desc">مشوي بالخلطة الإسكندراني المميزة.</p>
                         <div class="product-meta">
                             <span class="price">180 ج.م / كجم</span>
-                            <button class="btn-add-cart">أضف للطلب ➕</button>
+                            <button class="btn-add-cart" onclick="addToCart('سمك بوري سنجاري', 180)">أضف للطلب ➕</button>
                         </div>
                     </div>
                 </div>
@@ -781,7 +890,7 @@
                         <p class="product-desc">طاجن كاليماري بالصلصة والخضروات.</p>
                         <div class="product-meta">
                             <span class="price">200 ج.م</span>
-                            <button class="btn-add-cart">أضف للطلب ➕</button>
+                            <button class="btn-add-cart" onclick="addToCart('طاجن كاليماري', 200)">أضف للطلب ➕</button>
                         </div>
                     </div>
                 </div>
@@ -793,7 +902,7 @@
                         <p class="product-desc">2 كيلو سمك + 1 كيلو جمبري + أرز وسلطات.</p>
                         <div class="product-meta">
                             <span class="price">850 ج.م</span>
-                            <button class="btn-add-cart">أضف للطلب ➕</button>
+                            <button class="btn-add-cart" onclick="addToCart('وجبة اللمة (5 أفراد)', 850)">أضف للطلب ➕</button>
                         </div>
                     </div>
                 </div>
@@ -801,7 +910,7 @@
 
             <aside class="order-sidebar">
                 <h3>🛒 طلبك الحالي</h3>
-                <div class="cart-items-list">
+                <div class="cart-items-list" id="cartItemsList">
                     <div class="empty-cart-msg">
                         <p>أضف بعض الوجبات اللذيذة!</p>
                     </div>
@@ -809,7 +918,7 @@
                 <div class="cart-footer">
                     <div class="summary-line">
                         <span>المجموع:</span>
-                        <span class="final-total">0.00 ج.م</span>
+                        <span class="final-total" id="cartTotalSidebar">0.00 ج.م</span>
                     </div>
                     <button class="btn-primary btn-block btn-checkout"
                         onclick="document.getElementById('checkout-modal').classList.add('active')">إتمام الطلب
@@ -819,11 +928,246 @@
         </div>
 
         <section class="menu-preview-section">
-            <h3>تصفح المنيو المصور</h3>
-            <div class="menu-images-scroll">
-                <img src="https://placehold.co/350x600?text=Menu+1" alt="منيو 1" class="menu-img">
-                <img src="https://placehold.co/350x600?text=Menu+2" alt="منيو 2" class="menu-img">
-                <img src="https://placehold.co/350x600?text=Menu+3" alt="منيو 3" class="menu-img">
+            <h3>📋 قائمة الأسعار الكاملة</h3>
+            
+            <div class="menu-table-container">
+                <div class="menu-category">
+                    <h4>🐟 الأسماك الطازجة</h4>
+                    <table class="menu-table">
+                        <thead>
+                            <tr>
+                                <th>الصنف</th>
+                                <th>السعر (جنيه)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>بلطي</td>
+                                <td>68 / 70 / 75</td>
+                            </tr>
+                            <tr>
+                                <td>بلطي أسواني دباشي</td>
+                                <td>100</td>
+                            </tr>
+                            <tr>
+                                <td>شبار أسواني</td>
+                                <td>80</td>
+                            </tr>
+                            <tr>
+                                <td>بوري</td>
+                                <td>140 / 190 / 210</td>
+                            </tr>
+                            <tr>
+                                <td>قاروص دنيس</td>
+                                <td>450</td>
+                            </tr>
+                            <tr>
+                                <td>لوت</td>
+                                <td>195</td>
+                            </tr>
+                            <tr>
+                                <td>قشر بياض</td>
+                                <td>180</td>
+                            </tr>
+                            <tr>
+                                <td>مرجان أبو شرارة</td>
+                                <td>160</td>
+                            </tr>
+                            <tr>
+                                <td>شعور</td>
+                                <td>350</td>
+                            </tr>
+                            <tr>
+                                <td>بهار</td>
+                                <td>175</td>
+                            </tr>
+                            <tr>
+                                <td>بياض نيلي</td>
+                                <td>170</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="menu-category">
+                    <h4>🦐 الجمبري والمأكولات البحرية</h4>
+                    <table class="menu-table">
+                        <thead>
+                            <tr>
+                                <th>الصنف</th>
+                                <th>السعر (جنيه)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>جمبري بلدي سويسي</td>
+                                <td>200 / 220</td>
+                            </tr>
+                            <tr>
+                                <td>جمبري بلدي</td>
+                                <td>200</td>
+                            </tr>
+                            <tr>
+                                <td>جمبري بلدي</td>
+                                <td>220</td>
+                            </tr>
+                            <tr>
+                                <td>جمبري بلدي خشابي</td>
+                                <td>320</td>
+                            </tr>
+                            <tr>
+                                <td>جمبري بلدي سويسي</td>
+                                <td>550</td>
+                            </tr>
+                            <tr>
+                                <td>جمبري بلدي جامبو</td>
+                                <td>700</td>
+                            </tr>
+                            <tr>
+                                <td>كالماري بلدي</td>
+                                <td>180 / 200 / 300</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="menu-category">
+                    <h4>🦀 كابوريا ومكرونة البحر</h4>
+                    <table class="menu-table">
+                        <thead>
+                            <tr>
+                                <th>الصنف</th>
+                                <th>السعر (جنيه)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>كيلو وربع مكرونة مغازل كبيرة</td>
+                                <td>100</td>
+                            </tr>
+                            <tr>
+                                <td>كيلو وربع كابوريا نتي</td>
+                                <td>100</td>
+                            </tr>
+                            <tr>
+                                <td>كيلو ونص كابوريا دكر</td>
+                                <td>100</td>
+                            </tr>
+                            <tr>
+                                <td>كيلو وربع مكرونة خليجي</td>
+                                <td>100</td>
+                            </tr>
+                            <tr>
+                                <td>كيلو ونص مرجان خليجي</td>
+                                <td>100</td>
+                            </tr>
+                            <tr>
+                                <td>كابوريا نتي</td>
+                                <td>250</td>
+                            </tr>
+                            <tr>
+                                <td>كابوريا دكر</td>
+                                <td>150</td>
+                            </tr>
+                            <tr>
+                                <td>مكرونة سويسي</td>
+                                <td>150</td>
+                            </tr>
+                            <tr>
+                                <td>مكرونة دمياطي</td>
+                                <td>125</td>
+                            </tr>
+                            <tr>
+                                <td>مكرونة عيون مجمدة</td>
+                                <td>85</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="menu-category">
+                    <h4>🐠 أصناف متنوعة</h4>
+                    <table class="menu-table">
+                        <thead>
+                            <tr>
+                                <th>الصنف</th>
+                                <th>السعر (جنيه)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>تونة بلدي عسل نحل</td>
+                                <td>120</td>
+                            </tr>
+                            <tr>
+                                <td>تونة شك</td>
+                                <td>120</td>
+                            </tr>
+                            <tr>
+                                <td>بساريا</td>
+                                <td>25</td>
+                            </tr>
+                            <tr>
+                                <td>سردين سويسي</td>
+                                <td>160</td>
+                            </tr>
+                            <tr>
+                                <td>سردين عماني</td>
+                                <td>55</td>
+                            </tr>
+                            <tr>
+                                <td>لاشتا</td>
+                                <td>100</td>
+                            </tr>
+                            <tr>
+                                <td>ماكريل</td>
+                                <td>225</td>
+                            </tr>
+                            <tr>
+                                <td>سهلية سويسي بالشوي</td>
+                                <td>150</td>
+                            </tr>
+                            <tr>
+                                <td>مرجان سويسي</td>
+                                <td>120 / 150</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="menu-category special-offers">
+                    <h4>⭐ عروض المستوى</h4>
+                    <table class="menu-table">
+                        <thead>
+                            <tr>
+                                <th>الصنف</th>
+                                <th>السعر (جنيه)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>كيلو مكرونة مقلي</td>
+                                <td>140</td>
+                            </tr>
+                            <tr>
+                                <td>كيلو بلطي مشوي (3-4 سمكات)</td>
+                                <td>85</td>
+                            </tr>
+                            <tr>
+                                <td>كيلو بلطي مقلي</td>
+                                <td>85</td>
+                            </tr>
+                            <tr>
+                                <td>كيلو سهلية مشوي</td>
+                                <td>150</td>
+                            </tr>
+                            <tr class="highlight-row">
+                                <td>8 سندوتش جمبري</td>
+                                <td>200</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </section>
     </main>
@@ -833,22 +1177,22 @@
             <button class="close-modal"
                 onclick="document.getElementById('checkout-modal').classList.remove('active')">&times;</button>
             <h2>إتمام الطلب</h2>
-            <form class="checkout-form">
+            <form class="checkout-form" id="checkoutForm">
                 <div class="form-group">
                     <label>الاسم</label>
-                    <input type="text" required placeholder="أدخل اسمك">
+                    <input type="text" name="name" required placeholder="أدخل اسمك">
                 </div>
                 <div class="form-group">
                     <label>العنوان بالكامل</label>
-                    <input type="text" required placeholder="أدخل عنوانك بالتفصيل">
+                    <input type="text" name="address" required placeholder="أدخل عنوانك بالتفصيل">
                 </div>
                 <div class="form-group">
                     <label>رقم الهاتف</label>
-                    <input type="tel" required placeholder="أدخل رقم هاتفك">
+                    <input type="tel" name="phone" required placeholder="أدخل رقم هاتفك">
                 </div>
                 <div class="form-group">
                     <label>ملاحظات إضافية</label>
-                    <textarea placeholder="أي ملاحظات خاصة بالطلب؟"></textarea>
+                    <textarea name="notes" placeholder="أي ملاحظات خاصة بالطلب؟"></textarea>
                 </div>
                 <button type="submit" class="btn-primary btn-block">تأكيد الطلب 🚀</button>
             </form>
@@ -864,8 +1208,8 @@
             <div class="footer-col">
                 <h3>روابط سريعة</h3>
                 <ul>
-                    <li><a href="#">العروض</a></li>
-                    <li><a href="#">اتصل بنا</a></li>
+                    <li><a href="offers.html">العروض</a></li>
+                    <li><a href="contact.html">اتصل بنا</a></li>
                     <li><a href="#">سياسة الخصوصية</a></li>
                 </ul>
             </div>
@@ -884,6 +1228,171 @@
             <p>&copy; 2024 جميع الحقوق محفوظة.</p>
         </div>
     </footer>
+
+    <script>
+        // Cart management
+        let cart = [];
+
+        function addToCart(itemName, itemPrice) {
+            const item = {
+                id: Date.now(),
+                name: itemName,
+                price: itemPrice
+            };
+            
+            cart.push(item);
+            updateCartDisplay();
+            
+            // Show notification
+            showNotification(`تم إضافة "${itemName}" للسلة! 🎉`);
+        }
+
+        function removeFromCart(itemId) {
+            cart = cart.filter(item => item.id !== itemId);
+            updateCartDisplay();
+        }
+
+        function updateCartDisplay() {
+            const cartItemsList = document.getElementById('cartItemsList');
+            const cartTotalSidebar = document.getElementById('cartTotalSidebar');
+            const cartCount = document.getElementById('cartCount');
+            const cartTotalDisplay = document.getElementById('cartTotalDisplay');
+            
+            if (cart.length === 0) {
+                cartItemsList.innerHTML = '<div class="empty-cart-msg"><p>أضف بعض الوجبات اللذيذة!</p></div>';
+                if (cartTotalSidebar) cartTotalSidebar.textContent = '0.00 ج.م';
+                cartCount.textContent = '0 عناصر';
+                cartTotalDisplay.textContent = '0.00 ج.م';
+                return;
+            }
+            
+            let total = 0;
+            let html = '';
+            
+            cart.forEach(item => {
+                total += item.price;
+                html += `
+                    <div class="cart-item">
+                        <div class="cart-item-info">
+                            <div class="cart-item-name">${item.name}</div>
+                            <div class="cart-item-price">${item.price} ج.م</div>
+                        </div>
+                        <button class="cart-item-remove" onclick="removeFromCart(${item.id})">×</button>
+                    </div>
+                `;
+            });
+            
+            cartItemsList.innerHTML = html;
+            if (cartTotalSidebar) cartTotalSidebar.textContent = total.toFixed(2) + ' ج.م';
+            cartCount.textContent = cart.length + ' ' + (cart.length === 1 ? 'عنصر' : 'عناصر');
+            cartTotalDisplay.textContent = total.toFixed(2) + ' ج.م';
+        }
+
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 50%;
+                transform: translateX(50%);
+                background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+                color: white;
+                padding: 15px 30px;
+                border-radius: 10px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+                z-index: 10000;
+                font-weight: 600;
+                animation: slideDown 0.3s ease;
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideUp 0.3s ease';
+                setTimeout(() => notification.remove(), 300);
+            }, 2000);
+        }
+
+        // Add CSS for animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideDown {
+                from {
+                    transform: translateX(50%) translateY(-100px);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(50%) translateY(0);
+                    opacity: 1;
+                }
+            }
+            @keyframes slideUp {
+                from {
+                    transform: translateX(50%) translateY(0);
+                    opacity: 1;
+                }
+                to {
+                    transform: translateX(50%) translateY(-100px);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Checkout form submission
+        document.getElementById('checkoutForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (cart.length === 0) {
+                alert('الرجاء إضافة عناصر للسلة أولاً! 🛒');
+                return;
+            }
+            
+            const formData = new FormData(this);
+            const name = formData.get('name');
+            const phone = formData.get('phone');
+            const address = formData.get('address');
+            const notes = formData.get('notes');
+            
+            let orderSummary = `تم إرسال طلبك بنجاح! 🎉\n\n`;
+            orderSummary += `الاسم: ${name}\n`;
+            orderSummary += `الهاتف: ${phone}\n`;
+            orderSummary += `العنوان: ${address}\n`;
+            if (notes) orderSummary += `ملاحظات: ${notes}\n`;
+            orderSummary += `\nالطلبات:\n`;
+            
+            const orderItems = {};
+            cart.forEach(item => {
+                if (orderItems[item.name]) {
+                    orderItems[item.name].count++;
+                    orderItems[item.name].total += item.price;
+                } else {
+                    orderItems[item.name] = {
+                        count: 1,
+                        price: item.price,
+                        total: item.price
+                    };
+                }
+            });
+            
+            for (let itemName in orderItems) {
+                const item = orderItems[itemName];
+                orderSummary += `${itemName} × ${item.count} = ${item.total} ج.م\n`;
+            }
+            
+            const total = cart.reduce((sum, item) => sum + item.price, 0);
+            orderSummary += `\nالمجموع الكلي: ${total} ج.م\n\n`;
+            orderSummary += `سنتواصل معك قريباً. شكراً لثقتك! 🙏`;
+            
+            alert(orderSummary);
+            
+            // Reset
+            this.reset();
+            cart = [];
+            updateCartDisplay();
+            document.getElementById('checkout-modal').classList.remove('active');
+        });
+    </script>
 </body>
 
 </html>
