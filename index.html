@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>مطعم السلطان للمأكولات البحرية - طازج من البحر</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -44,6 +44,7 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 var(--spacing-md);
+            width: 100%;
         }
 
         /* Header */
@@ -54,6 +55,7 @@
             top: 0;
             z-index: 1000;
             padding: var(--spacing-sm) 0;
+            width: 100%;
         }
 
         .main-header .container {
@@ -915,6 +917,7 @@
             color: var(--color-secondary);
             padding-top: var(--spacing-xl);
             margin-top: var(--spacing-xl);
+            width: 100%;
         }
 
         .main-footer .container {
@@ -991,13 +994,20 @@
         }
 
         /* Responsive */
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
             .main-nav {
                 display: none;
             }
 
             .menu-toggle {
                 display: flex;
+            }
+        }
+
+        @media (max-width: 768px) {
+            :root {
+                --spacing-xl: 40px;
+                --spacing-lg: 24px;
             }
 
             .hero-section {
@@ -1026,6 +1036,37 @@
                 min-width: 300px;
             }
         }
+
+        @media (max-width: 480px) {
+            :root {
+                --spacing-xl: 32px;
+                --spacing-lg: 20px;
+                --spacing-md: 12px;
+            }
+
+            .container {
+                padding: 0 12px;
+            }
+
+            .logo img {
+                height: 50px;
+                width: 50px;
+            }
+
+            .mobile-menu {
+                width: 100%;
+            }
+
+            .hero-section {
+                height: 50vh;
+            }
+
+            .hero-contact,
+            .hero-location {
+                font-size: 0.9rem;
+                padding: 10px 20px;
+            }
+        }
     </style>
 </head>
 
@@ -1037,7 +1078,7 @@
             </a>
             <nav class="main-nav">
                 <ul>
-                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="index.html" class="active">الرئيسية</a></li>
                     <li><a href="offers.html">العروض اليوم</a></li>
                     <li><a href="contact.html">تواصل معنا</a></li>
                     <li>
@@ -1061,10 +1102,10 @@
         <button class="close-menu"
             onclick="document.querySelector('.mobile-menu').classList.remove('active')">&times;</button>
         <ul>
-            <li><a href="#" onclick="document.querySelector('.mobile-menu').classList.remove('active')">الرئيسية</a></li>
-            <li><a href="#offers" onclick="document.querySelector('.mobile-menu').classList.remove('active')">العروض اليوم</a></li>
-            <li><a href="#contact" onclick="document.querySelector('.mobile-menu').classList.remove('active')">تواصل معنا</a></li>
-            <li><a href="#orders" onclick="document.querySelector('.mobile-menu').classList.remove('active')">طلباتي</a></li>
+            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="offers.html">العروض اليوم</a></li>
+            <li><a href="contact.html">تواصل معنا</a></li>
+            <li><a href="orders.html">طلباتي</a></li>
         </ul>
     </div>
 
@@ -1393,8 +1434,8 @@
             <div class="footer-col">
                 <h3>روابط سريعة</h3>
                 <ul>
-                    <li><a href="#offers">العروض</a></li>
-                    <li><a href="#contact">اتصل بنا</a></li>
+                    <li><a href="offers.html">العروض</a></li>
+                    <li><a href="contact.html">اتصل بنا</a></li>
                     <li><a href="#">سياسة الخصوصية</a></li>
                 </ul>
             </div>

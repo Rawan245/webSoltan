@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>تواصل معنا - مطعم السلطان للمأكولات البحرية</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,12 +38,14 @@
             background-color: var(--color-bg-light);
             color: var(--color-text);
             line-height: 1.8;
+            overflow-x: hidden;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 var(--spacing-md);
+            width: 100%;
         }
 
         /* Header */
@@ -54,6 +56,7 @@
             top: 0;
             z-index: 1000;
             padding: var(--spacing-sm) 0;
+            width: 100%;
         }
 
         .main-header .container {
@@ -167,6 +170,7 @@
         .page-content {
             padding-top: var(--spacing-xl);
             padding-bottom: var(--spacing-xl);
+            width: 100%;
         }
 
         /* Contact Section */
@@ -175,6 +179,8 @@
             grid-template-columns: 1fr 1fr;
             gap: var(--spacing-xl);
             align-items: start;
+            width: 100%;
+            overflow-x: hidden;
         }
 
         .contact-info-panel {
@@ -183,6 +189,7 @@
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-card);
             border-right: 5px solid var(--color-accent);
+            width: 100%;
         }
 
         .contact-info-panel h2 {
@@ -313,12 +320,14 @@
             overflow: hidden;
             box-shadow: var(--shadow-card);
             border: 5px solid var(--color-secondary);
+            width: 100%;
         }
 
         .map-container {
             height: 600px;
             border-radius: var(--radius-lg);
             overflow: hidden;
+            width: 100%;
         }
 
         .map-container iframe {
@@ -333,6 +342,7 @@
             color: var(--color-secondary);
             padding-top: var(--spacing-xl);
             margin-top: var(--spacing-xl);
+            width: 100%;
         }
 
         .main-footer .container {
@@ -393,14 +403,10 @@
             transform: translateY(-3px);
         }
 
-        .footer-bottom {
-            background: rgba(0, 0, 0, 0.2);
-            text-align: center;
-            padding: var(--spacing-lg);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
+        /* Responsive Design */
+        
+        /* Tablets and below */
+        @media (max-width: 992px) {
             .main-nav {
                 display: none;
             }
@@ -408,9 +414,22 @@
             .menu-toggle {
                 display: flex;
             }
+            
+            .contact-section-layout {
+                gap: var(--spacing-lg);
+            }
+        }
 
+        /* Mobile Landscape and below */
+        @media (max-width: 768px) {
+            :root {
+                --spacing-xl: 40px;
+                --spacing-lg: 24px;
+            }
+            
             .contact-section-layout {
                 grid-template-columns: 1fr;
+                gap: var(--spacing-lg);
             }
 
             .map-container {
@@ -424,6 +443,109 @@
             .social-btn {
                 min-width: 100%;
             }
+            
+            .contact-info-panel,
+            .map-panel {
+                padding: var(--spacing-lg);
+            }
+            
+            .contact-info-panel {
+                padding: var(--spacing-lg);
+            }
+            
+            .main-footer .container {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-lg);
+            }
+        }
+
+        /* Small Mobile Devices */
+        @media (max-width: 480px) {
+            :root {
+                --spacing-xl: 32px;
+                --spacing-lg: 20px;
+                --spacing-md: 12px;
+            }
+            
+            .container {
+                padding: 0 12px;
+            }
+            
+            .logo img {
+                height: 50px;
+                width: 50px;
+            }
+            
+            .contact-info-panel h2 {
+                font-size: 1.5rem;
+            }
+            
+            .contact-info-panel > p {
+                font-size: 1rem;
+            }
+            
+            .info-item {
+                padding: var(--spacing-md);
+                gap: var(--spacing-md);
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .info-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+            
+            .info-text strong {
+                font-size: 1.1rem;
+            }
+            
+            .info-text p {
+                font-size: 0.95rem;
+            }
+            
+            .map-container {
+                height: 300px;
+            }
+            
+            .social-btn {
+                padding: 12px 20px;
+                font-size: 1rem;
+            }
+            
+            .page-content {
+                padding-top: var(--spacing-lg);
+                padding-bottom: var(--spacing-lg);
+            }
+            
+            .contact-info-panel,
+            .map-panel {
+                padding: var(--spacing-md);
+            }
+            
+            .mobile-menu {
+                width: 100%;
+            }
+        }
+
+        /* Extra Small Devices */
+        @media (max-width: 360px) {
+            .contact-info-panel h2 {
+                font-size: 1.3rem;
+            }
+            
+            .info-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
+            }
+            
+            .social-btn {
+                padding: 10px 15px;
+                font-size: 0.95rem;
+            }
         }
     </style>
 </head>
@@ -435,20 +557,17 @@
                 <img src="images/logo.png" alt="شعار المطعم">
             </a>
             <nav class="main-nav">
-                <nav class="main-nav">
-                    <ul>
-                        <li><a href="index.html">الرئيسية</a></li>
-                        <li><a href="offers.html">العروض اليوم</a></li>
-                        <li><a href="contact.html">تواصل معنا</a></li>
-                        <li>
-                            <a href="orders.html" class="orders-link">
-                                <i class="fa-solid fa-clipboard-list"></i>
-                                طلباتي
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-
+                <ul>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="offers.html">العروض اليوم</a></li>
+                    <li><a href="contact.html" class="active">تواصل معنا</a></li>
+                    <li>
+                        <a href="orders.html" class="orders-link">
+                            <i class="fa-solid fa-clipboard-list"></i>
+                            طلباتي
+                        </a>
+                    </li>
+                </ul>
             </nav>
             <button class="menu-toggle" onclick="document.querySelector('.mobile-menu').classList.add('active')">
                 <span class="bar"></span>
@@ -462,13 +581,10 @@
         <button class="close-menu"
             onclick="document.querySelector('.mobile-menu').classList.remove('active')">&times;</button>
         <ul>
-            <li><a href="#" onclick="document.querySelector('.mobile-menu').classList.remove('active')">الرئيسية</a>
-            </li>
-            <li><a href="#" onclick="document.querySelector('.mobile-menu').classList.remove('active')">العروض اليوم</a>
-            </li>
-            <li><a href="#" onclick="document.querySelector('.mobile-menu').classList.remove('active')">تواصل معنا</a>
-            </li>
-            <li><a href="#" onclick="document.querySelector('.mobile-menu').classList.remove('active')">طلباتي</a></li>
+            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="offers.html">العروض اليوم</a></li>
+            <li><a href="contact.html">تواصل معنا</a></li>
+            <li><a href="orders.html">طلباتي</a></li>
         </ul>
     </div>
 
@@ -537,8 +653,8 @@
             <div class="footer-col">
                 <h3>روابط سريعة</h3>
                 <ul>
-                    <li><a href="#">العروض</a></li>
-                    <li><a href="#">اتصل بنا</a></li>
+                    <li><a href="offers.html">العروض</a></li>
+                    <li><a href="contact.html">اتصل بنا</a></li>
                     <li><a href="#">سياسة الخصوصية</a></li>
                 </ul>
             </div>
