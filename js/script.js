@@ -5,7 +5,10 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- 1. Mobile Menu Logic ---
+    // ---------------------------------------------
+    // 1. منطق القائمة للجوال (Mobile Menu Logic)
+    // هذا القسم مسؤول عن فتح/إغلاق القائمة المتنقلة عند الضغط على زر القائمة.
+    // ---------------------------------------------
     const menuToggle = document.querySelector('.menu-toggle');
     const mobileMenu = document.querySelector('.mobile-menu');
     const closeMenu = document.querySelector('.close-menu');
@@ -24,9 +27,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // --- 2. Shared Helpers ---
+    // ---------------------------------------------
+    // 2. دوال مساعدة مشتركة (Shared Helpers)
+    // ---------------------------------------------
 
     // Extract price number from string (e.g. "480 ج.م" -> 480)
+    // الدالة تقوم بإزالة أي نص غير الأرقام والفاصلة العشرية ثم تحويل الناتج لرقم.
     const extractPrice = (str) => {
         if (!str) return 0;
         const clean = str.replace(/[^\d.]/g, '');
@@ -34,15 +40,18 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // Save order to LocalStorage
+    // تخزن الطلب داخل مصفوفة في localStorage تحت المفتاح myOrders
     const saveOrder = (order) => {
         const orders = JSON.parse(localStorage.getItem('myOrders') || '[]');
-        orders.unshift(order); // Add to top
+        orders.unshift(order); // إضافة الطلب في البداية (أحدث أولاً)
         localStorage.setItem('myOrders', JSON.stringify(orders));
     };
 
 
-    // --- 3. Order Logic (Orders Page) ---
-    // Only runs if we are on the Orders page
+    // ---------------------------------------------
+    // 3. منطق صفحة الطلبات (Orders Page Logic)
+    // هذا القسم يبحث عن المكان في الصفحة المخصص لسجل الطلبات ويعرضها من LocalStorage.
+    // ---------------------------------------------
     const historySection = document.querySelector('.orders-section.history-section');
     if (historySection) {
         const loadOrders = () => {
@@ -67,6 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const itemsList = (order.items || []).map(item => `<li>${item.qty || 1}x ${item.name}</li>`).join('');
 
+                const commentHtml = order.comment ? `<p style="margin-top:8px; color:#555;">ملاحظة: ${order.comment}</p>` : '';
                 card.innerHTML = `
                     <div class="order-header">
                         <div class="order-id">
@@ -87,6 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <strong>${order.total}</strong>
                         </div>
                         <p class="order-date">📅 ${order.date}</p>
+                        ${commentHtml}
                     </div>
                 `;
                 historySection.appendChild(card);
@@ -96,7 +107,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // --- 4. Home Page Order Form Logic ---
+    // ---------------------------------------------
+    // 4. منطق صفحة العروض/الرئيسية لارسال الطلبات عبر الفورم
+    // يستخدم هذا القسم فورم الطلبات في الصفحة الرئيسية (offers/index) لتحويلها للطلبات المخزنة.
+    // ---------------------------------------------
     const homeOrderForm = document.querySelector('.order-form');
     if (homeOrderForm) {
         homeOrderForm.addEventListener('submit', (e) => {
@@ -162,6 +176,104 @@ document.addEventListener('DOMContentLoaded', () => {
             // Redirect option (commented out)
             // window.location.href = 'orders.html';
         });
+    }
+
+    // ---------------------------------------------
+    // 4.1. منطق تعليق الخدمة وإضافة طلب جديد (معلق مؤقتًا)
+    // عند تفعيل orderFeatureEnabled= true، يتم تفعيل هذا القسم
+    // ---------------------------------------------
+    const orderFeatureEnabled = false; // معلق مؤقتًا، افعل لاحقًا بتغييرها true
+    if (orderFeatureEnabled) {
+        const orderFeedbackForm = document.querySelector('#order-feedback-form');
+        if (orderFeedbackForm) {
+            orderFeedbackForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const feedback = document.querySelector('#order-feedback');
+                const responseEl = document.querySelector('#feedback-response');
+                if (!feedback.value.trim()) {
+                    responseEl.style.display = 'block';
+                    responseEl.style.color = '#e74c3c';
+                    responseEl.textContent = 'من فضلك اكتب التعليق قبل الإرسال.';
+                    return;
+                }
+                responseEl.style.display = 'block';
+                responseEl.style.color = '#27ae60';
+                responseEl.textContent = 'تم استلام تعليقك، شكرًا لك على مساعدتنا في تحسين الخدمة!';
+                feedback.value = '';
+            });
+        }
+
+        const newOrderForm = document.querySelector('#new-order-form');
+        if (newOrderForm) {
+            newOrderForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const itemsValue = document.querySelector('#new-order-items').value.trim();
+                const totalValue = document.querySelector('#new-order-total').value.trim();
+                const commentValue = document.querySelector('#new-order-comment').value.trim();
+                const responseEl = document.querySelector('#new-order-response');
+
+                if (!itemsValue || !totalValue) {
+                    responseEl.style.display = 'block';
+                    responseEl.style.color = '#e74c3c';
+                    responseEl.textContent = 'الرجاء إدخال عناصر الطلب والإجمالي.';
+                    return;
+                }
+
+                const id = Math.floor(Math.random() * 9000) + 1000;
+                const date = new Date().toLocaleDateString('ar-EG');
+                const itemsList = itemsValue.split(',').map(i => i.trim()).filter(Boolean);
+                const totalNumber = extractPrice(totalValue);
+                const commentText = commentValue ? `<p style="margin-top:8px; color:#555;">ملاحظة: ${commentValue}</p>` : '';
+
+                const customContainer = document.querySelector('#custom-orders-container');
+                const card = document.createElement('div');
+                card.className = 'order-card active-order';
+                card.innerHTML = `
+                <div class="order-header">
+                    <div class="order-id">
+                        <span class="label">رقم الطلب:</span>
+                        <strong>#${id}</strong>
+                    </div>
+                    <div class="order-status status-preparing">
+                        <span>جاري التحضير 🍳</span>
+                        <div class="status-dot"></div>
+                    </div>
+                </div>
+                <div class="order-body">
+                    <ul class="order-items-summary">
+                        ${itemsList.map(item => `<li>${item}</li>`).join('')}
+                    </ul>
+                    <div class="order-total">
+                        <span>الإجمالي:</span>
+                        <strong>${totalValue}</strong>
+                    </div>
+                    <p class="order-date">📅 ${date}</p>
+                    ${commentText}
+                </div>
+                <div class="order-actions">
+                    <button class="btn-track">تتبع الطلب 📍</button>
+                    <button class="btn-cancel">إلغاء ❌</button>
+                </div>
+            `;
+                customContainer.insertAdjacentElement('afterbegin', card);
+
+                // persist this order to LocalStorage (same model used خصيصًا)
+                saveOrder({
+                    id,
+                    date,
+                    status: 'active',
+                    statusText: 'جاري التحضير 🍳',
+                    items: itemsList.map(i => ({ name: i, qty: 1 })),
+                    total: `${totalNumber} ج.م`,
+                    comment: commentValue || ''
+                });
+
+                responseEl.style.display = 'block';
+                responseEl.style.color = '#27ae60';
+                responseEl.textContent = `تم إضافة الطلب بنجاح. رقم الطلب: #${id}`;
+                newOrderForm.reset();
+            });
+        }
     }
 
     // --- 5. "Quick Order" Buttons (Home Page Offer Cards) ---

@@ -788,12 +788,13 @@
                     <li><a href="index.html">الرئيسية</a></li>
                     <li><a href="offers.html">العروض اليوم</a></li>
                     <li><a href="contact.html">تواصل معنا</a></li>
-                    <li>
+                    <!-- زر طلباتي مخفي مؤقتاً -->
+                    <!-- <li>
                         <a href="orders.html" class="orders-link">
                             <i class="fa-solid fa-clipboard-list"></i>
                             طلباتي
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
             </nav>
             <button class="menu-toggle" onclick="document.querySelector('.mobile-menu').classList.add('active')">
@@ -814,7 +815,8 @@
             </li>
             <li><a href="contact.html" onclick="document.querySelector('.mobile-menu').classList.remove('active')">تواصل معنا</a>
             </li>
-            <li><a href="orders.html" onclick="document.querySelector('.mobile-menu').classList.remove('active')">طلباتي</a></li>
+            <!-- زر طلباتي مخفي مؤقتاً -->
+            <!-- <li><a href="orders.html" onclick="document.querySelector('.mobile-menu').classList.remove('active')">طلباتي</a></li> -->
         </ul>
     </div>
 
@@ -824,7 +826,7 @@
                 <input type="text" placeholder="ابحث عن وجبتك المفضلة... 🐟">
                 <button class="btn-search">بحث</button>
             </div>
-            <div class="cart-status" onclick="document.getElementById('checkout-modal').classList.add('active')">
+            <div class="cart-status" title="ميزة سلة الطلبات معلقة"> <!-- onclick disabled مؤقتً -->
                 <span class="cart-icon">🛒</span>
                 <div class="cart-info">
                     <span class="cart-count" id="cartCount">0 عناصر</span>
@@ -842,7 +844,8 @@
                         <p class="product-desc">طازج ومنظف بعناية، جاهز للقلي أو الشوي.</p>
                         <div class="product-meta">
                             <span class="price">280 ج.م / كجم</span>
-                            <button class="btn-add-cart" onclick="addToCart('فيليه سمك قشر بياض', 280)">أضف للطلب ➕</button>
+                            <!-- زر إضافة للطلب مخفي مؤقتاً -->
+                            <!-- <button class="btn-add-cart" disabled title="ميزة إضافة الطلب معلقة">معطل</button> -->
                         </div>
                     </div>
                 </div>
@@ -854,7 +857,8 @@
                         <p class="product-desc">جمبري سويس ممتاز، الحجم الكبير.</p>
                         <div class="product-meta">
                             <span class="price">450 ج.م / كجم</span>
-                            <button class="btn-add-cart" onclick="addToCart('جمبري جامبو بقشره', 450)">أضف للطلب ➕</button>
+                            <!-- زر إضافة للطلب مخفي مؤقتاً -->
+                            <!-- <button class="btn-add-cart" disabled title="ميزة إضافة الطلب معلقة">معطل</button> -->
                         </div>
                     </div>
                 </div>
@@ -866,7 +870,8 @@
                         <p class="product-desc">تشكيلة رائعة من فواكه البحر مع الكريمة.</p>
                         <div class="product-meta">
                             <span class="price">120 ج.م</span>
-                            <button class="btn-add-cart" onclick="addToCart('طبق شوربة سي فود مخلية', 120)">أضف للطلب ➕</button>
+                            <!-- زر إضافة للطلب مخفي مؤقتاً -->
+                            <!-- <button class="btn-add-cart" disabled title="ميزة إضافة الطلب معلقة">معطل</button> -->
                         </div>
                     </div>
                 </div>
@@ -878,7 +883,8 @@
                         <p class="product-desc">مشوي بالخلطة الإسكندراني المميزة.</p>
                         <div class="product-meta">
                             <span class="price">180 ج.م / كجم</span>
-                            <button class="btn-add-cart" onclick="addToCart('سمك بوري سنجاري', 180)">أضف للطلب ➕</button>
+                            <!-- زر إضافة للطلب مخفي مؤقتاً -->
+                            <!-- <button class="btn-add-cart" disabled title="ميزة إضافة الطلب معلقة">معطل</button> -->
                         </div>
                     </div>
                 </div>
@@ -890,7 +896,8 @@
                         <p class="product-desc">طاجن كاليماري بالصلصة والخضروات.</p>
                         <div class="product-meta">
                             <span class="price">200 ج.م</span>
-                            <button class="btn-add-cart" onclick="addToCart('طاجن كاليماري', 200)">أضف للطلب ➕</button>
+                            <!-- زر إضافة للطلب مخفي مؤقتاً -->
+                            <!-- <button class="btn-add-cart" disabled title="ميزة إضافة الطلب معلقة">معطل</button> -->
                         </div>
                     </div>
                 </div>
@@ -902,13 +909,15 @@
                         <p class="product-desc">2 كيلو سمك + 1 كيلو جمبري + أرز وسلطات.</p>
                         <div class="product-meta">
                             <span class="price">850 ج.م</span>
-                            <button class="btn-add-cart" onclick="addToCart('وجبة اللمة (5 أفراد)', 850)">أضف للطلب ➕</button>
+                            <!-- زر إضافة للطلب مخفي مؤقتاً -->
+                            <!-- <button class="btn-add-cart" disabled title="ميزة إضافة الطلب معلقة">معطل</button> -->
                         </div>
                     </div>
                 </div>
             </section>
 
-            <aside class="order-sidebar">
+            <!-- جزء طلبك الحالي مخفي مؤقتاً -->
+            <!-- <aside class="order-sidebar">
                 <h3>🛒 طلبك الحالي</h3>
                 <div class="cart-items-list" id="cartItemsList">
                     <div class="empty-cart-msg">
@@ -920,11 +929,10 @@
                         <span>المجموع:</span>
                         <span class="final-total" id="cartTotalSidebar">0.00 ج.م</span>
                     </div>
-                    <button class="btn-primary btn-block btn-checkout"
-                        onclick="document.getElementById('checkout-modal').classList.add('active')">إتمام الطلب
-                        ✅</button>
+                    <!-- زر إتمام الطلب مخفي مؤقتاً -->
+                    <!-- <button class="btn-primary btn-block btn-checkout" disabled title="ميزة إتمام الطلب معلقة">إتمام الطلب (معلق)</button> -->
                 </div>
-            </aside>
+            </aside> -->
         </div>
 
         <section class="menu-preview-section">

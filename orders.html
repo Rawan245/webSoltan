@@ -613,11 +613,12 @@
                         <li><a href="index.html">الرئيسية</a></li>
                         <li><a href="offers.html">العروض اليوم</a></li>
                         <li><a href="contact.html">تواصل معنا</a></li>
-                        <li>
+                        <!-- زر طلباتي مخفي مؤقتاً -->
+                        <!-- <li>
                             <a href="orders.html" class="orders-link active">
                                 <i class="fa-solid fa-clipboard-list"></i>
                                 طلباتي
-                            </a>
+                            </a> -->
                         </li>
                     </ul>
             </nav>
@@ -635,7 +636,8 @@
             <li><a href="index.html">الرئيسية</a></li>
             <li><a href="offers.html">العروض اليوم</a></li>
             <li><a href="contact.html">تواصل معنا</a></li>
-            <li><a href="orders.html">طلباتي</a></li>
+            <!-- زر طلباتي مخفي مؤقتاً -->
+            <!-- <li><a href="orders.html">طلباتي</a></li> -->
         </ul>
     </div>
 
@@ -644,6 +646,35 @@
             <i class="fa-solid fa-clipboard-list"></i>
             طلباتي
         </h2>
+
+        <!-- --------------------------------------------- -->
+        <!-- تعليق مؤقت على ميزة الطلبات الجديدة والتعليقات -->
+        <!-- لتفعيلها قم بإزالة التعليق التالي من حدود <!-- ... --> -->
+        <!-- --------------------------------------------- -->
+        <!-- الميزة مؤقتًا معلقة - تم التعليق حتى يتم تفعيلها لاحقًا -->
+        <!--
+        <div class="orders-section" style="background:#fff; padding:16px; border-radius:12px; box-shadow:var(--shadow-card); margin-bottom:24px;">
+            <h3 class="section-subtitle">تعليق على خدمة الطلبات</h3>
+            <form id="order-feedback-form" style="display:flex; flex-direction:column; gap:10px;">
+                <textarea id="order-feedback" rows="3" placeholder="اكتب تعليقك هنا..." style="width:100%; padding:12px; border:1px solid var(--color-border); border-radius:8px; resize:vertical;"></textarea>
+                <button type="submit" class="btn-track" style="width:fit-content;">إرسال التعليق</button>
+            </form>
+            <div id="feedback-response" style="margin-top:10px; color:#27ae60; display:none;"></div>
+        </div>
+
+        <div class="orders-section" style="background:#fff; padding:16px; border-radius:12px; box-shadow:var(--shadow-card); margin-bottom:24px;">
+            <h3 class="section-subtitle">إضافة طلب جديد</h3>
+            <form id="new-order-form" style="display:grid; gap:10px;">
+                <input id="new-order-items" type="text" placeholder="مثال: 1x جمبري مشوي, 2x أرز صيادية" style="padding:10px; border:1px solid var(--color-border); border-radius:8px;" />
+                <input id="new-order-total" type="text" placeholder="الإجمالي (ج.م)" style="padding:10px; border:1px solid var(--color-border); border-radius:8px;" />
+                <input id="new-order-comment" type="text" placeholder="معلومة اضافية / ملاحظة" style="padding:10px; border:1px solid var(--color-border); border-radius:8px;" />
+                <button type="submit" class="btn-reorder" style="width:fit-content;">أضف الطلب</button>
+            </form>
+            <div id="new-order-response" style="margin-top:10px; color:#27ae60; display:none;"></div>
+        </div>
+
+        <div id="custom-orders-container"></div>
+        -->
 
         <div class="orders-section">
             <h3 class="section-subtitle">الطلبات الحالية</h3>
