@@ -465,7 +465,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             title: '🐟 الأسماك الطازجة',
             items: [
-                { name: 'بلطي', price: '68 / 70 / 75' },
+                { name: 'بلطي', price: '68 / 70 / 750' },
                 { name: 'بلطي أسواني دباشي', price: '100' },
                 { name: 'شبار أسواني', price: '80' },
                 { name: 'بوري', price: '140 / 190 / 210' },
