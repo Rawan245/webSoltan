@@ -535,6 +535,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const container = document.querySelector('#menuCardsContainer');
         if (!container) return;
 
+        const isOffersPage = window.location.pathname.includes('offers.html');
+        const categoryClass = isOffersPage ? 'menu-category' : 'menu-category-card';
+
         container.innerHTML = menuData.map(category => {
             const rows = category.items.map(item => {
                 const highlight = item.highlight ? ' class="highlight-row"' : '';
@@ -542,7 +545,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }).join('');
 
             return `
-                <div class="menu-category-card${category.title.includes('⭐') ? ' special-offers' : ''}">
+                <div class="${categoryClass}${category.title.includes('⭐') ? ' special-offers' : ''}">
                     <h4>${category.title}</h4>
                     <table class="menu-table">
                         <thead>
