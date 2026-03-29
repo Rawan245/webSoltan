@@ -460,5 +460,101 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // --- 8. Menu Data-driven Rendering ---
+    const menuData = [
+        {
+            title: '🐟 الأسماك الطازجة',
+            items: [
+                { name: 'بلطي', price: '68 / 70 / 75' },
+                { name: 'بلطي أسواني دباشي', price: '100' },
+                { name: 'شبار أسواني', price: '80' },
+                { name: 'بوري', price: '140 / 190 / 210' },
+                { name: 'قاروص دنيس', price: '450' },
+                { name: 'لوت', price: '195' },
+                { name: 'قشر بياض', price: '180' },
+                { name: 'مرجان أبو شرارة', price: '160' },
+                { name: 'شعور', price: '350' },
+                { name: 'بهار', price: '175' },
+                { name: 'بياض نيلي', price: '170' }
+            ]
+        },
+        {
+            title: '🦐 الجمبري والمأكولات البحرية',
+            items: [
+                { name: 'جمبري بلدي سويسي', price: '200 / 220' },
+                { name: 'جمبري بلدي', price: '200' },
+                { name: 'جمبري بلدي', price: '220' },
+                { name: 'جمبري بلدي خشابي', price: '320' },
+                { name: 'جمبري بلدي سويسي', price: '550' },
+                { name: 'جمبري بلدي جامبو', price: '700' },
+                { name: 'كالماري بلدي', price: '180 / 200 / 300' }
+            ]
+        },
+        {
+            title: '🦀 كابوريا ومكرونة البحر',
+            items: [
+                { name: 'كيلو وربع مكرونة مغازل كبيرة', price: '100' },
+                { name: 'كيلو وربع كابوريا نتي', price: '100' },
+                { name: 'كيلو ونص كابوريا دكر', price: '100' },
+                { name: 'كيلو وربع مكرونة خليجي', price: '100' },
+                { name: 'كيلو ونص مرجان خليجي', price: '100' },
+                { name: 'كابوريا نتي', price: '250' },
+                { name: 'كابوريا دكر', price: '150' },
+                { name: 'مكرونة سويسي', price: '150' },
+                { name: 'مكرونة دمياطي', price: '125' },
+                { name: 'مكرونة عيون مجمدة', price: '85' }
+            ]
+        },
+        {
+            title: '🐠 أصناف متنوعة',
+            items: [
+                { name: 'تونة بلدي عسل نحل', price: '120' },
+                { name: 'تونة شك', price: '120' },
+                { name: 'بساريا', price: '25' },
+                { name: 'سردين سويسي', price: '160' },
+                { name: 'سردين عماني', price: '55' },
+                { name: 'لاشتا', price: '100' },
+                { name: 'ماكريل', price: '225' },
+                { name: 'سهلية سويسي بالشوي', price: '150' },
+                { name: 'مرجان سويسي', price: '120 / 150' }
+            ]
+        },
+        {
+            title: '⭐ عروض المستوى',
+            items: [
+                { name: 'كيلو مكرونة مقلي', price: '140' },
+                { name: 'كيلو بلطي مشوي (3-4 سمكات)', price: '85' },
+                { name: 'كيلو بلطي مقلي', price: '85' },
+                { name: 'كيلو سهلية مشوي', price: '150' },
+                { name: '8 سندوتش جمبري', price: '200', highlight: true }
+            ]
+        }
+    ];
+
+    const renderMenu = () => {
+        const container = document.querySelector('#menuCardsContainer');
+        if (!container) return;
+
+        container.innerHTML = menuData.map(category => {
+            const rows = category.items.map(item => {
+                const highlight = item.highlight ? ' class="highlight-row"' : '';
+                return `<tr${highlight}><td>${item.name}</td><td>${item.price}</td></tr>`;
+            }).join('');
+
+            return `
+                <div class="menu-category-card${category.title.includes('⭐') ? ' special-offers' : ''}">
+                    <h4>${category.title}</h4>
+                    <table class="menu-table">
+                        <thead>
+                            <tr><th>الصنف</th><th>السعر (جنيه)</th></tr>
+                        </thead>
+                        <tbody>${rows}</tbody>
+                    </table>
+                </div>`;
+        }).join('');
+    };
+
+    renderMenu();
+
 });
 
