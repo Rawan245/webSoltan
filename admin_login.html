@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول - مطعم السلطان</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: #0d1b2a;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(ellipse at 20% 50%, rgba(23,53,95,0.6) 0%, transparent 50%),
+                        radial-gradient(ellipse at 80% 20%, rgba(32,112,213,0.3) 0%, transparent 50%),
+                        radial-gradient(ellipse at 60% 80%, rgba(23,53,95,0.4) 0%, transparent 50%);
+            animation: bgMove 8s ease-in-out infinite alternate;
+            z-index: 0;
+        }
+
+        @keyframes bgMove {
+            0% { transform: translate(0,0) rotate(0deg); }
+            100% { transform: translate(-2%,2%) rotate(1deg); }
+        }
+
+        .stars {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0;
+            animation: twinkle var(--dur) ease-in-out infinite var(--delay);
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; }
+            50% { opacity: var(--op); }
+        }
+
+        .login-card {
+            position: relative;
+            z-index: 1;
+            background: #112236;
+            border: 1px solid #1e3a5f;
+            border-radius: 24px;
+            padding: 48px 40px;
+            width: 90%;
+            max-width: 420px;
+            box-shadow: 0 32px 64px rgba(0,0,0,0.5);
+            animation: cardIn 0.6s cubic-bezier(0.34,1.56,0.64,1) forwards;
+        }
+
+        @keyframes cardIn {
+            from { opacity: 0; transform: translateY(30px) scale(0.95); }
+            to   { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .logo-area {
+            text-align: center;
+            margin-bottom: 36px;
+        }
+
+        .logo-icon {
+            width: 72px; height: 72px;
+            background: linear-gradient(135deg, #2070D5, #17355F);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 2rem;
+            box-shadow: 0 8px 24px rgba(32,112,213,0.4);
+        }
+
+        .logo-area h1 { color: #ffffff; font-size: 1.6rem; font-weight: 800; margin-bottom: 4px; }
+        .logo-area p  { color: #6b8db5; font-size: 0.9rem; }
+
+        .form-group { margin-bottom: 20px; }
+
+        label {
+            display: block;
+            color: #a8c4e0;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            background: #1a2d45;
+            border: 2px solid #2a4a70;
+            border-radius: 12px;
+            padding: 14px 16px;
+            color: #ffffff;
+            font-family: 'Cairo', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s;
+            outline: none;
+            display: block;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            border-color: #2070D5;
+            background: #1e3555;
+            box-shadow: 0 0 0 3px rgba(32,112,213,0.3);
+        }
+
+        input::placeholder { color: #4a6a8a; }
+
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus {
+            -webkit-box-shadow: 0 0 0px 1000px #1a2d45 inset !important;
+            -webkit-text-fill-color: #ffffff !important;
+            border-color: #2070D5 !important;
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #2070D5, #17355F);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 8px;
+            transition: all 0.3s;
+        }
+
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(32,112,213,0.5);
+        }
+
+        .btn-login:active { transform: translateY(0); }
+
+        .error-msg {
+            background: rgba(231,76,60,0.2);
+            border: 1px solid rgba(231,76,60,0.5);
+            color: #ff8080;
+            padding: 12px 16px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            text-align: center;
+            margin-top: 16px;
+            display: none;
+        }
+
+        .attempts-warn {
+            color: #ffc864;
+            font-size: 0.85rem;
+            text-align: center;
+            margin-top: 10px;
+            display: none;
+        }
+
+        @keyframes shake {
+            0%,100% { transform: translateX(0); }
+            25%      { transform: translateX(-8px); }
+            75%      { transform: translateX(8px); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="stars" id="stars"></div>
+
+<div class="login-card">
+    <div class="logo-area">
+        <div class="logo-icon">🏰</div>
+        <h1>مطعم السلطان</h1>
+        <p>لوحة تحكم الأدمن</p>
+    </div>
+
+    <div class="form-group">
+        <label for="username">اسم المستخدم</label>
+        <input type="text" id="username" placeholder="أدخل اسم المستخدم" autocomplete="off">
+    </div>
+
+    <div class="form-group">
+        <label for="password">كلمة المرور</label>
+        <input type="password" id="password" placeholder="أدخل كلمة المرور" autocomplete="off">
+    </div>
+
+    <button class="btn-login" onclick="doLogin()">دخول ←</button>
+
+    <div class="error-msg" id="errorMsg">❌ اسم المستخدم أو كلمة المرور غير صحيحة</div>
+    <div class="attempts-warn" id="attemptsWarn"></div>
+</div>
+
+<script>
+    // ✅ غيّر هنا بياناتك
+    const ADMIN_USERNAME = "admin";
+    const ADMIN_PASSWORD = "sultan2024";
+    // ==========================
+
+    let attempts = 0;
+    const MAX_ATTEMPTS = 5;
+
+    if (sessionStorage.getItem('adminLoggedIn') === 'true') {
+        window.location.href = 'admin.html';
+    }
+
+    function doLogin() {
+        const user = document.getElementById('username').value.trim();
+        const pass = document.getElementById('password').value;
+        const errMsg = document.getElementById('errorMsg');
+        const warnMsg = document.getElementById('attemptsWarn');
+
+        if (attempts >= MAX_ATTEMPTS) {
+            errMsg.textContent = '🔒 تم تجميد الدخول. أعد تحميل الصفحة للمحاولة مجدداً.';
+            errMsg.style.display = 'block';
+            return;
+        }
+
+        if (user === ADMIN_USERNAME && pass === ADMIN_PASSWORD) {
+            sessionStorage.setItem('adminLoggedIn', 'true');
+            document.querySelector('.btn-login').textContent = '✅ جاري الدخول...';
+            setTimeout(() => { window.location.href = 'admin.html'; }, 800);
+        } else {
+            attempts++;
+            errMsg.style.display = 'block';
+            errMsg.style.animation = 'none';
+            void errMsg.offsetWidth;
+            errMsg.style.animation = 'shake 0.4s ease';
+
+            const remaining = MAX_ATTEMPTS - attempts;
+            if (remaining > 0 && remaining <= 3) {
+                warnMsg.textContent = `⚠️ تبقّى لك ${remaining} محاولة`;
+                warnMsg.style.display = 'block';
+            }
+            if (attempts >= MAX_ATTEMPTS) {
+                errMsg.textContent = '🔒 تم تجميد الدخول. أعد تحميل الصفحة للمحاولة مجدداً.';
+                warnMsg.style.display = 'none';
+            }
+
+            document.getElementById('password').value = '';
+            document.getElementById('password').focus();
+        }
+    }
+
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Enter') doLogin();
+    });
+
+    // نجوم
+    const sc = document.getElementById('stars');
+    for (let i = 0; i < 60; i++) {
+        const s = document.createElement('div');
+        s.className = 'star';
+        const size = 1 + Math.random() * 2;
+        s.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*100}%;width:${size}px;height:${size}px;--dur:${2+Math.random()*4}s;--delay:${Math.random()*4}s;--op:${0.3+Math.random()*0.6};`;
+        sc.appendChild(s);
+    }
+</script>
+</body>
+</html>
